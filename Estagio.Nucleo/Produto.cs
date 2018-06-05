@@ -25,7 +25,7 @@ namespace Estagio.Nucleo
 
         public override string ToString()
         {
-            //return Id;
+            return Id.ToString();
         }
 
     }

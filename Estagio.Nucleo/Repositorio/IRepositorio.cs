@@ -12,7 +12,7 @@ namespace Estagio.Nucleo.Repositorio
         void Delete(T item);
         void UpDate(T item);
         IEnumerable<T> GetAll();
-        T GetById(int Id);
+        T GetById(int id);
 
     }
 }
