@@ -16,8 +16,16 @@ namespace Estagio.Nucleo.Repositorio
 
         private List<Produto> _produtos = new List<Produto>();
 
+        public IEnumerable<Produto> Produtos => _produtos.AsReadOnly();
+
+
+
         public void Add(Produto item)
         {
+            if (_produtos.Contains(item))
+            {
+                throw new ApplicationException("Produto já existente");
+            }
             _produtos.Add(item);
         }
 
@@ -33,7 +41,9 @@ namespace Estagio.Nucleo.Repositorio
 
         public void UpDate(Produto item)
         {
-            _produtos.Remove(item);
+           
+            //var produtoRemovido = _produtos.Find(x => x.Id == item.Id);
+            _produtos.Remove(GetById(item.Id));
             _produtos.Add(item);
         }
 

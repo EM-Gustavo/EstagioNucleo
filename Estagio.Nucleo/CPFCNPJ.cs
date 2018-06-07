@@ -164,10 +164,6 @@ namespace Estagio.Nucleo
             return (obj is CPFCNPJ cPFCNPJ) && cPFCNPJ._numero == _numero;
         }
 
-        public override int GetHashCode()
-        {
-            return _numero.GetHashCode();
-        }
 
     }
-}
+} 

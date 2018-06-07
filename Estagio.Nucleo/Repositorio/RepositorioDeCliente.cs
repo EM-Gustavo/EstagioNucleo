@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Estagio.Nucleo.Repositorio
 {
-    class RepositorioDeCliente : IRepositorio<Cliente>
+    public class RepositorioDeCliente : IRepositorio<Cliente>
     {
         public static readonly RepositorioDeCliente Instancia = new RepositorioDeCliente();
 
