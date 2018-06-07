@@ -67,7 +67,6 @@
             this.label3.Size = new System.Drawing.Size(113, 20);
             this.label3.TabIndex = 10;
             this.label3.Text = "Preço Unitário:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 

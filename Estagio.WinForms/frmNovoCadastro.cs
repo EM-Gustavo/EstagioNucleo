@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Estagio.Nucleo;
 using Estagio.Nucleo.Repositorio;
 
-namespace FormTeste
+namespace Estagio.WinForms
 {
     public partial class frmNovoCadastro : Form
     {
@@ -19,10 +19,9 @@ namespace FormTeste
             InitializeComponent();
         }
 
-        private void btnCadastro_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
             var novoProduto = new Produto();
-            novoProduto.Id = Convert.ToInt32(txtId.Text);
             novoProduto.Descricao = txtNomeDoProduto.Text;
             novoProduto.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
             novoProduto.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
@@ -31,13 +30,13 @@ namespace FormTeste
             {
                 RepositorioDeProduto.Instancia.Add(novoProduto);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            MessageBox.Show("Sucesso" , "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Sucesso", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 
@@ -45,5 +44,6 @@ namespace FormTeste
         {
 
         }
+
     }
 }

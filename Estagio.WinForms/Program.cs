@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FormTeste
+namespace Estagio.WinForms
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace FormTeste
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCadastro());
+            Application.Run(new Form1());
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Estagio.Nucleo.Repositorio
 
         public void UpDate(MovimentacaoDeEstoqueAbstrato item)
         {
-            _movimentacaoDeEstoqueAbstratos.Remove(item);
+            _movimentacaoDeEstoqueAbstratos.Remove(GetById(item.Id));
             _movimentacaoDeEstoqueAbstratos.Add(item);
         }
     }

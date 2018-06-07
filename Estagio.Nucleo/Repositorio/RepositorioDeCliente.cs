@@ -39,7 +39,7 @@ namespace Estagio.Nucleo.Repositorio
 
         public void UpDate(Cliente item)
         {
-            _clientes.Remove(item);
+            _clientes.Remove(GetById(item.Id));
             _clientes.Add(item);
         }
     }

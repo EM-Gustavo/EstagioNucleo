@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Estagio.Nucleo;
 using Estagio.Nucleo.Repositorio;
 
-namespace FormTeste
+namespace Estagio.WinForms
 {
     public partial class frmEditarProduto : Form
     {
@@ -27,8 +27,6 @@ namespace FormTeste
         private void btnCadastro_Click(object sender, EventArgs e)
         {
             var produtoEditado = new Produto();
-            produtoEditado.Descricao = txtNomeDoProduto.Text;
-            produtoEditado.Id = Convert.ToInt32(txtId.Text);
             produtoEditado.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
             produtoEditado.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
 
@@ -44,4 +42,3 @@ namespace FormTeste
         }
     }
 }
-

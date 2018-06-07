@@ -41,8 +41,6 @@ namespace Estagio.Nucleo.Repositorio
 
         public void UpDate(Produto item)
         {
-           
-            //var produtoRemovido = _produtos.Find(x => x.Id == item.Id);
             _produtos.Remove(GetById(item.Id));
             _produtos.Add(item);
         }
