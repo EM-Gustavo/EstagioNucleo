@@ -19,26 +19,30 @@ namespace Estagio.WinForms
             InitializeComponent();
         }
 
-        private void frmEditar_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCadastro_Click(object sender, EventArgs e)
-        {
-            var produtoEditado = new Produto();
-            produtoEditado.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
-            produtoEditado.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
-
-            RepositorioDeProduto.Instancia.UpDate(produtoEditado);
-
-            MessageBox.Show("Sucesso");
-            this.Close();
-        }
+        public Produto Produto { get; set; }
 
         private void frmEditarProduto_Load(object sender, EventArgs e)
         {
+            txtDescricao.Text = Produto?.Descricao ?? string.Empty;
+            txtPrecoUnitario.Text = Produto?.PrecoUnitario.ToString() ?? string.Empty;
+            txtQuantidade.Text = Produto?.QuantidadeMinimaEstoque.ToString() ?? string.Empty;
 
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            var produtoEditado = new Produto();
+            Produto.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
+            Produto.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
+            RepositorioDeProduto.Instancia.UpDate(Produto);
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

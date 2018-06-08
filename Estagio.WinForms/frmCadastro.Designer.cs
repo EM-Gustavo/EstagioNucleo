@@ -1,6 +1,6 @@
 ﻿namespace Estagio.WinForms
 {
-    partial class Form1
+    partial class frmCadastro
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtInfoParaPesquisa = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.panel3.SuspendLayout();
+            this.bsProdutos = new System.Windows.Forms.BindingSource(this.components);
+            this.txtInfoParaPesquisa = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsProdutos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtInfoParaPesquisa
-            // 
-            this.txtInfoParaPesquisa.Location = new System.Drawing.Point(3, 7);
-            this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
-            this.txtInfoParaPesquisa.Size = new System.Drawing.Size(438, 20);
-            this.txtInfoParaPesquisa.TabIndex = 0;
-            this.txtInfoParaPesquisa.TextChanged += new System.EventHandler(this.txtInfoParaPesquisa_TextChanged);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtInfoParaPesquisa);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(486, 35);
-            this.panel3.TabIndex = 2;
             // 
             // btnExcluir
             // 
@@ -106,48 +90,59 @@
             this.flowLayoutPanel1.Controls.Add(this.btnExcluir);
             this.flowLayoutPanel1.Controls.Add(this.btnFechar);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(486, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(572, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(90, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(88, 455);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // dgvProdutos
             // 
+            this.dgvProdutos.AutoGenerateColumns = false;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutos.DataSource = this.bsProdutos;
             this.dgvProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProdutos.Location = new System.Drawing.Point(0, 35);
+            this.dgvProdutos.Location = new System.Drawing.Point(0, 20);
             this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.Size = new System.Drawing.Size(486, 415);
+            this.dgvProdutos.Size = new System.Drawing.Size(572, 435);
             this.dgvProdutos.TabIndex = 5;
+            this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
             // 
-            // Form1
+            // txtInfoParaPesquisa
+            // 
+            this.txtInfoParaPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtInfoParaPesquisa.Location = new System.Drawing.Point(0, 0);
+            this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
+            this.txtInfoParaPesquisa.Size = new System.Drawing.Size(572, 20);
+            this.txtInfoParaPesquisa.TabIndex = 0;
+            // 
+            // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 450);
+            this.ClientSize = new System.Drawing.Size(660, 455);
             this.Controls.Add(this.dgvProdutos);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.txtInfoParaPesquisa);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "Form1";
+            this.Name = "frmCadastro";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.Load += new System.EventHandler(this.frmCadastro_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsProdutos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtInfoParaPesquisa;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvProdutos;
+        private System.Windows.Forms.TextBox txtInfoParaPesquisa;
+        private System.Windows.Forms.BindingSource bsProdutos;
     }
 }
 

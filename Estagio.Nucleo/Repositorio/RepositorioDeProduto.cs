@@ -10,8 +10,9 @@ namespace Estagio.Nucleo.Repositorio
     {
         public static readonly RepositorioDeProduto Instancia = new RepositorioDeProduto();
 
-        private RepositorioDeProduto() {
-               
+        private RepositorioDeProduto()
+        {
+
         }
 
         private List<Produto> _produtos = new List<Produto>();
@@ -22,10 +23,10 @@ namespace Estagio.Nucleo.Repositorio
 
         public void Add(Produto item)
         {
-            if (_produtos.Contains(item))
-            {
-                throw new ApplicationException("Produto já existente");
-            }
+            //if (_produtos.Contains(item))
+            //{
+            //    throw new ApplicationException("Produto já existente");
+            //}
             _produtos.Add(item);
         }
 
@@ -36,7 +37,7 @@ namespace Estagio.Nucleo.Repositorio
 
         public Produto GetById(int Id)
         {
-            return _produtos.Find( x => x.Id == Id);
+            return _produtos.Find(x => x.Id == Id);
         }
 
         public void UpDate(Produto item)
@@ -47,7 +48,8 @@ namespace Estagio.Nucleo.Repositorio
 
         public IEnumerable<Produto> GetAll()
         {
-            return _produtos;
+            //return new List<Produto>(_produtos);
+            return _produtos.Select(c => (Produto)c.Clone());
         }
 
 
