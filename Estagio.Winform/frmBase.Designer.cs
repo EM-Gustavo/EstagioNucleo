@@ -83,7 +83,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmBase";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.frmBase_Load);
             this.ssBarraDeStatus.ResumeLayout(false);
             this.ssBarraDeStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -66,6 +66,12 @@
     <Compile Include="frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBaseAterrisagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaseAterrisagem.Designer.cs">
+      <DependentUpon>frmBaseAterrisagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBase.resx">

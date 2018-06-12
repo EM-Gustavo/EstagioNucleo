@@ -17,9 +17,13 @@ namespace Estagio.WinForm
             InitializeComponent();
         }
 
-        private void frmBase_Load(object sender, EventArgs e)
+        public frmBase(IContainer components, PictureBox pictureBox1, StatusStrip ssBarraDeStatus, ToolStripStatusLabel toolStripStatusLabel1, Panel panel1)
         {
-
+            this.components = components;
+            this.pictureBox1 = pictureBox1;
+            this.ssBarraDeStatus = ssBarraDeStatus;
+            this.toolStripStatusLabel1 = toolStripStatusLabel1;
+            this.panel1 = panel1;
         }
     }
 }
