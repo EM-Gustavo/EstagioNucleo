@@ -37,6 +37,13 @@ namespace Estagio.WinForm
             dgvGeral.Columns.Add(colunaDescricao);
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            bsGeral.DataSource = ObtenhaListaDeDados();
+            bsGeral.ResetBindings(false);
+        }
+
         private void btnNovo_Click(object sender, EventArgs e)
         {
             var frm = CrieFormularioNovo();
