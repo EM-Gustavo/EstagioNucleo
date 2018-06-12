@@ -19,17 +19,18 @@ namespace Estagio.WinForm
         public frmEditarProduto()
         {
             InitializeComponent();
+
         }
 
-        private void frmEditarProduto_Load(object sender, EventArgs e)
+        protected override void EnviaValor(Produto produto)
         {
-            txtDescricao.Text = Produto?.Descricao ?? string.Empty;
-            txtPrecoUnitario.Text = Produto?.PrecoUnitario.ToString() ?? string.Empty;
-            txtQuantidade.Text = Produto?.QuantidadeMinimaEstoque.ToString() ?? string.Empty;
+            txtDescricao.Text = produto.Descricao;
+            txtPrecoUnitario.Text = produto?.PrecoUnitario.ToString() ?? string.Empty;
+            txtQuantidade.Text = produto?.QuantidadeMinimaEstoque.ToString() ?? string.Empty;
 
         }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        protected override void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtDescricao.Text))
             {

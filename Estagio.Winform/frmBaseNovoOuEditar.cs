@@ -16,5 +16,10 @@ namespace Estagio.WinForm
         {
             InitializeComponent();
         }
+
+        protected virtual void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

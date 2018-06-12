@@ -40,11 +40,15 @@ namespace Estagio.WinForm
             RepositorioDeProduto.Instancia.Delete((Produto)itemSelecioando);
         }
 
-        protected override void EnviaItem(object itemSelecionado)
-        {
-            var frm = new frmEditarProduto();
-            frm.Produto = (Produto)itemSelecionado;
-        }
+        //protected override void EditaValor(object itemSelecionado)
+        //{
+        //    EnviaValor((Produto)itemSelecionado);
+        //}
+
+        //protected virtual void EnviaValor(Produto itemSelecionado)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         protected override Form CrieFormularioNovo()
         {

@@ -122,9 +122,9 @@ namespace Estagio.WinForm
                 ExibaMensagemDeNaoSelecionado();
                 return;
             }
+            EditaValor(itemSelecioando);
             var frm = CrieFormularioEdicao();
 
-            EnviaItem(itemSelecioando);
 
             var resultado = frm.ShowDialog();
             if (resultado == DialogResult.OK)
@@ -133,7 +133,7 @@ namespace Estagio.WinForm
             }
         }
 
-        protected virtual void EnviaItem(object itemSelecionado)
+        protected virtual void EditaValor(object itemSelecionado)
         {
             throw new NotImplementedException();
         }
