@@ -40,21 +40,21 @@ namespace Estagio.WinForm
             RepositorioDeProduto.Instancia.Delete((Produto)itemSelecioando);
         }
 
-        //protected override void EnviaItem(object itemSelecionado)
-        //{
-        //    var frm = new frmEditarProduto();
-        //    frm.Produto = (Produto)itemSelecionado;
-        //}
+        protected override void EnviaItem(object itemSelecionado)
+        {
+            var frm = new frmEditarProduto();
+            frm.Produto = (Produto)itemSelecionado;
+        }
 
-        //protected override Form CrieFormularioNovo()
-        //{
-        //    return new frmNovoProduto();
-        //}
+        protected override Form CrieFormularioNovo()
+        {
+            return new frmNovoProduto();
+        }
 
-        //protected override Form CrieFormularioEdicao()
-        //{
-        //    return new frmEditarProduto();
-        //}
+        protected override Form CrieFormularioEdicao()
+        {
+            return new frmEditarProduto();
+        }
 
         protected override string ObtenhaMensagemBotaoOk()
         {
