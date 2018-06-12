@@ -77,7 +77,7 @@
             this.btnFechar.Location = new System.Drawing.Point(3, 117);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(80, 32);
-            this.btnFechar.TabIndex = 3;
+            this.btnFechar.TabIndex = 1;
             this.btnFechar.Text = "&Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -93,7 +93,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(572, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(88, 455);
-            this.flowLayoutPanel1.TabIndex = 4;
+            this.flowLayoutPanel1.TabIndex = 1;
             // 
             // dgvProdutos
             // 
@@ -101,19 +101,24 @@
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.DataSource = this.bsProdutos;
             this.dgvProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProdutos.Location = new System.Drawing.Point(0, 20);
+            this.dgvProdutos.Location = new System.Drawing.Point(0, 26);
             this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.Size = new System.Drawing.Size(572, 435);
-            this.dgvProdutos.TabIndex = 5;
+            this.dgvProdutos.Size = new System.Drawing.Size(572, 429);
+            this.dgvProdutos.TabIndex = 1;
             this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
             // 
             // txtInfoParaPesquisa
             // 
             this.txtInfoParaPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtInfoParaPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInfoParaPesquisa.Location = new System.Drawing.Point(0, 0);
             this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
-            this.txtInfoParaPesquisa.Size = new System.Drawing.Size(572, 20);
-            this.txtInfoParaPesquisa.TabIndex = 0;
+            this.txtInfoParaPesquisa.Size = new System.Drawing.Size(572, 26);
+            this.txtInfoParaPesquisa.TabIndex = 2;
+            this.txtInfoParaPesquisa.Text = "Informar as iniciais do nome";
+            this.txtInfoParaPesquisa.Enter += new System.EventHandler(this.txtInfoParaPesquisa_Enter);
+            this.txtInfoParaPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInfoParaPesquisa_KeyDown);
+            this.txtInfoParaPesquisa.Leave += new System.EventHandler(this.txtInfoParaPesquisa_Leave);
             // 
             // frmCadastro
             // 
@@ -123,7 +128,9 @@
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.txtInfoParaPesquisa);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "frmCadastro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmCadastro_Load);
             this.flowLayoutPanel1.ResumeLayout(false);

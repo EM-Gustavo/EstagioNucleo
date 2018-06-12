@@ -64,17 +64,12 @@ namespace Estagio.WinForms
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            var produtoSelecionado = (Produto)bsProdutos.Current;
-            if(produtoSelecionado == null)
-            {
-                MessageBox.Show("Selecione um produto");
-                return;
-            }
+
             var frmEditar = new frmNovoProduto();
             var resultado = frmEditar.ShowDialog();
             if (resultado == DialogResult.OK)
             {
-                MessageBox.Show("Produto Cadastrado");
+                MessageBox.Show("Produto Cadastrado", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll();
             bsProdutos.ResetBindings(false);
@@ -86,7 +81,7 @@ namespace Estagio.WinForms
             var produtoSelecioando = (Produto)bsProdutos.Current;
             if (produtoSelecioando == null)
             {
-                MessageBox.Show("Selecione um produto");
+                MessageBox.Show("Selecione um produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var frmEditar = new frmEditarProduto();
@@ -94,18 +89,32 @@ namespace Estagio.WinForms
             var resultado = frmEditar.ShowDialog();
             if (resultado == DialogResult.OK)
             {
-                MessageBox.Show("Produto Editado");
+                MessageBox.Show("Produto Editado" , "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll();
+            bsProdutos.ResetBindings(false);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            //var selecionado = (Produto)grdBuscaDeProdutos ;
-            //RepositorioDeProduto.Instancia.Delete(selecionado);
-            var produto = (Produto)bsProdutos.Current;
-            bsProdutos.RemoveCurrent();
+            var produtoSelecioando = (Produto)bsProdutos.Current;
+            if (produtoSelecioando == null)
+            {
+                MessageBox.Show("Selecione um produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            RepositorioDeProduto.Instancia.Delete(produto);
+            var resultado = MessageBox.Show("Deseja excluir o produto?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(resultado == DialogResult.Yes)
+            {
+                var produto = (Produto)bsProdutos.Current;
+                bsProdutos.RemoveCurrent();
+
+                RepositorioDeProduto.Instancia.Delete(produto);
+
+                MessageBox.Show("Produto Exluído", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+  
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -123,6 +132,31 @@ namespace Estagio.WinForms
 
         }
 
- 
+        private void txtInfoParaPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll().Where(p => p.Descricao.ToUpper().Contains(txtInfoParaPesquisa.Text.ToUpper())).ToList();
+                bsProdutos.ResetBindings(false);
+            }
+        }
+
+        private void txtInfoParaPesquisa_Enter(object sender, EventArgs e)
+        {
+            if(txtInfoParaPesquisa.Text == "Informar as iniciais do nome")
+            {
+                txtInfoParaPesquisa.Text = string.Empty;
+                txtInfoParaPesquisa.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtInfoParaPesquisa_Leave(object sender, EventArgs e)
+        {
+            if (txtInfoParaPesquisa.Text == string.Empty)
+            {
+                txtInfoParaPesquisa.Text = "Informar as iniciais do nome";
+                txtInfoParaPesquisa.ForeColor = Color.Silver;
+            }
+        }
     }
 }

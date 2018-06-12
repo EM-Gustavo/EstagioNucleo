@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FormTeste
 {
@@ -16,7 +16,7 @@ namespace FormTeste
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCadastro());
+            Application.Run(new frmCadastroDeProduto());
         }
     }
 }

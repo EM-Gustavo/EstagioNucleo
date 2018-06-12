@@ -31,7 +31,7 @@ namespace Estagio.Nucleo
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return Id;
         }
 
         public override string ToString()

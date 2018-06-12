@@ -51,18 +51,77 @@ namespace Estagio.WinForms
             }
 
             var produtoNovo = new Produto();
+            produtoNovo.Id = RepositorioDeProduto.Instancia.Produtos.Count() + 1;
             produtoNovo.Descricao = txtDescricao.Text;
             produtoNovo.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
             produtoNovo.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
-            RepositorioDeProduto.Instancia.Add(Produto);
-            DialogResult = DialogResult.OK;
-            Close();
 
+            //if (Produto.Equals(produtoNovo))
+            //{
+            //    RepositorioDeProduto.Instancia.Add(produtoNovo);
+            //    DialogResult = DialogResult.OK;
+            //}
+            Close();
+        }
+
+        private void txtPrecoUnitario_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                txtPrecoUnitario.Text = Convert.ToDecimal(txtPrecoUnitario.Text).ToString("0.00");
+                txtPrecoUnitario.MaxLength = 20;
+            }
+            catch
+            {
+
+            }
         }
 
         private void frmNovoCadastro_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var teclaBackSpace = 8;
+            var teclaVirgula = 44;
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != teclaBackSpace && e.KeyChar != teclaVirgula)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrecoUnitario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var teclaBackSpace = 8;
+            var teclaVirgula = 44;
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != teclaBackSpace && e.KeyChar != teclaVirgula)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            txtQuantidade.MaxLength = 20;
+        }
+
+        private void txtPrecoUnitario_TextChanged(object sender, EventArgs e)
+        {
+            txtPrecoUnitario.MaxLength = 20;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+            
+        }
+
+        private void txtDescricao_TextChanged(object sender, EventArgs e)
+        {
+            txtDescricao.MaxLength = 30;
         }
     }
 }

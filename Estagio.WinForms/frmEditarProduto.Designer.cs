@@ -43,7 +43,8 @@
             this.txtDescricao.Location = new System.Drawing.Point(143, 46);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(130, 20);
-            this.txtDescricao.TabIndex = 29;
+            this.txtDescricao.TabIndex = 1;
+            this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
             // btnConfirmar
             // 
@@ -51,7 +52,7 @@
             this.btnConfirmar.Location = new System.Drawing.Point(324, 46);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(123, 35);
-            this.btnConfirmar.TabIndex = 28;
+            this.btnConfirmar.TabIndex = 4;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
@@ -61,7 +62,11 @@
             this.txtPrecoUnitario.Location = new System.Drawing.Point(143, 125);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
             this.txtPrecoUnitario.Size = new System.Drawing.Size(128, 20);
-            this.txtPrecoUnitario.TabIndex = 27;
+            this.txtPrecoUnitario.TabIndex = 3;
+            this.txtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecoUnitario.TextChanged += new System.EventHandler(this.txtPrecoUnitario_TextChanged);
+            this.txtPrecoUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoUnitario_KeyPress);
+            this.txtPrecoUnitario.Leave += new System.EventHandler(this.txtPrecoUnitario_Leave);
             // 
             // label3
             // 
@@ -70,7 +75,7 @@
             this.label3.Location = new System.Drawing.Point(31, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 20);
-            this.label3.TabIndex = 26;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Preço Unitário:";
             // 
             // label2
@@ -80,7 +85,7 @@
             this.label2.Location = new System.Drawing.Point(31, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
-            this.label2.TabIndex = 25;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Quantidade:";
             // 
             // label1
@@ -90,7 +95,7 @@
             this.label1.Location = new System.Drawing.Point(31, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
-            this.label1.TabIndex = 24;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Produto:";
             // 
             // txtQuantidade
@@ -98,7 +103,10 @@
             this.txtQuantidade.Location = new System.Drawing.Point(143, 86);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(128, 20);
-            this.txtQuantidade.TabIndex = 23;
+            this.txtQuantidade.TabIndex = 2;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // btnCancelar
             // 
@@ -106,7 +114,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(324, 87);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(123, 35);
-            this.btnCancelar.TabIndex = 30;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -126,6 +134,7 @@
             this.Controls.Add(this.txtQuantidade);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmEditarProduto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmEditarProduto";
             this.Load += new System.EventHandler(this.frmEditarProduto_Load);
             this.ResumeLayout(false);

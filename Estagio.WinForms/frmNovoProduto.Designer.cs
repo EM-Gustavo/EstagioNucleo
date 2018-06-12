@@ -40,17 +40,22 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(132, 34);
+            this.txtDescricao.Location = new System.Drawing.Point(130, 34);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(130, 20);
-            this.txtDescricao.TabIndex = 22;
+            this.txtDescricao.TabIndex = 1;
+            this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
             // txtPrecoUnitario
             // 
             this.txtPrecoUnitario.Location = new System.Drawing.Point(132, 113);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
             this.txtPrecoUnitario.Size = new System.Drawing.Size(128, 20);
-            this.txtPrecoUnitario.TabIndex = 20;
+            this.txtPrecoUnitario.TabIndex = 3;
+            this.txtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecoUnitario.TextChanged += new System.EventHandler(this.txtPrecoUnitario_TextChanged);
+            this.txtPrecoUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoUnitario_KeyPress);
+            this.txtPrecoUnitario.Leave += new System.EventHandler(this.txtPrecoUnitario_Leave);
             // 
             // label3
             // 
@@ -59,7 +64,7 @@
             this.label3.Location = new System.Drawing.Point(20, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 20);
-            this.label3.TabIndex = 19;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Preço Unitário:";
             // 
             // label2
@@ -69,7 +74,7 @@
             this.label2.Location = new System.Drawing.Point(20, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
-            this.label2.TabIndex = 18;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Quantidade:";
             // 
             // label1
@@ -79,7 +84,7 @@
             this.label1.Location = new System.Drawing.Point(20, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
-            this.label1.TabIndex = 17;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Produto:";
             // 
             // txtQuantidade
@@ -87,7 +92,10 @@
             this.txtQuantidade.Location = new System.Drawing.Point(132, 74);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(128, 20);
-            this.txtQuantidade.TabIndex = 16;
+            this.txtQuantidade.TabIndex = 2;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // btnCancelar
             // 
@@ -95,9 +103,10 @@
             this.btnCancelar.Location = new System.Drawing.Point(290, 89);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(123, 35);
-            this.btnCancelar.TabIndex = 32;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
@@ -105,12 +114,12 @@
             this.btnConfirmar.Location = new System.Drawing.Point(290, 48);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(123, 35);
-            this.btnConfirmar.TabIndex = 31;
+            this.btnConfirmar.TabIndex = 4;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // frmNovoCadastro
+            // frmNovoProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +133,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtQuantidade);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmNovoCadastro";
+            this.Name = "frmNovoProduto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmNovoCadastro";
             this.Load += new System.EventHandler(this.frmNovoCadastro_Load);
             this.ResumeLayout(false);
