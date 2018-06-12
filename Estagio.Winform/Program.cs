@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Estagio.Winform
+namespace Estagio.WinForm
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Estagio.Winform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCadastroDeProduto());
+            //Application.Run(new frmCadastroDeProduto());
         }
     }
 }

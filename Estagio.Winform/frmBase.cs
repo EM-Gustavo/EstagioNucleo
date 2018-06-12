@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Estagio.Winform
+namespace Estagio.WinForm
 {
     public partial class frmBase : Form
     {

@@ -6,11 +6,26 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{20738B3E-34D5-40FC-9420-103FCEFF8FDC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Estagio.Winform</RootNamespace>
-    <AssemblyName>Estagio.Winform</AssemblyName>
+    <RootNamespace>Estagio.WinForm</RootNamespace>
+    <AssemblyName>Estagio.WinForm</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,55 +66,10 @@
     <Compile Include="frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBaseAterrisagem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBaseAterrisagem.Designer.cs">
-      <DependentUpon>frmBaseAterrisagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmBaseNovoOuEditar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBaseNovoOuEditar.Designer.cs">
-      <DependentUpon>frmBaseNovoOuEditar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCadastroDeProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCadastroDeProduto.Designer.cs">
-      <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmEditarProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmEditarProduto.Designer.cs">
-      <DependentUpon>frmEditarProduto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmNovoProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNovoProduto.Designer.cs">
-      <DependentUpon>frmNovoProduto.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBaseAterrisagem.resx">
-      <DependentUpon>frmBaseAterrisagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBaseNovoOuEditar.resx">
-      <DependentUpon>frmBaseNovoOuEditar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastroDeProduto.resx">
-      <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmEditarProduto.resx">
-      <DependentUpon>frmEditarProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNovoProduto.resx">
-      <DependentUpon>frmNovoProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,6 +105,18 @@
       <Project>{6427a6be-4098-4afa-9360-c7c20a6e891f}</Project>
       <Name>Estagio.Nucleo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
