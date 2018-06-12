@@ -13,7 +13,7 @@ namespace Estagio.WinForm
 {
     public partial class frmBaseAterrisagem : frmBase
     {
-        public frmBaseAterrisagem(IContainer components, PictureBox pictureBox1, StatusStrip ssBarraDeStatus, ToolStripStatusLabel toolStripStatusLabel1, Panel panel1) : base(components, pictureBox1, ssBarraDeStatus, toolStripStatusLabel1, panel1)
+        public frmBaseAterrisagem() 
         {
             InitializeComponent();
 

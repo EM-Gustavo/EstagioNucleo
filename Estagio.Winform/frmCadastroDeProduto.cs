@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Estagio.WinForm
 {
-    public partial class frmBase : Form
+    public partial class frmCadastroDeProduto : frmBaseAterrisagem
     {
-        public frmBase()
+        public frmCadastroDeProduto() 
         {
             InitializeComponent();
         }
-              
     }
 }

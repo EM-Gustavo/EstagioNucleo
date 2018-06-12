@@ -78,6 +78,12 @@
     <Compile Include="frmBaseNovoOuEditar.Designer.cs">
       <DependentUpon>frmBaseNovoOuEditar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadastroDeProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroDeProduto.Designer.cs">
+      <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBase.resx">
