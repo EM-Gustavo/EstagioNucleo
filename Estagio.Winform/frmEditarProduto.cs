@@ -14,23 +14,18 @@ namespace Estagio.WinForm
 {
     public partial class frmEditarProduto : frmBaseNovoOuEditar
     {
-        public Produto Produto { get; set; }
+        public Produto _produto { get; set; }
 
-        public frmEditarProduto()
+        public frmEditarProduto(Produto Produto)
         {
             InitializeComponent();
-
+            txtDescricao.Text = Produto.Descricao;
+            txtPrecoUnitario.Text = Produto?.PrecoUnitario.ToString() ?? string.Empty;
+            txtQuantidade.Text = Produto?.QuantidadeMinimaEstoque.ToString() ?? string.Empty;
+            _produto = Produto;
         }
-
-        protected override void EnviaValor(Produto produto)
-        {
-            txtDescricao.Text = produto.Descricao;
-            txtPrecoUnitario.Text = produto?.PrecoUnitario.ToString() ?? string.Empty;
-            txtQuantidade.Text = produto?.QuantidadeMinimaEstoque.ToString() ?? string.Empty;
-
-        }
-
-        protected override void btnConfirmar_Click(object sender, EventArgs e)
+       
+        protected override void btnConfirmar_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtDescricao.Text))
             {
@@ -52,10 +47,11 @@ namespace Estagio.WinForm
                 return;
             }
 
-            var produtoEditado = new Produto();
-            Produto.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
-            Produto.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
-            RepositorioDeProduto.Instancia.UpDate(Produto);
+
+            _produto.Descricao = txtDescricao.Text;
+            _produto.PrecoUnitario = Convert.ToDecimal(txtPrecoUnitario.Text);
+            _produto.QuantidadeMinimaEstoque = Convert.ToInt32(txtQuantidade.Text);
+            RepositorioDeProduto.Instancia.UpDate(_produto);
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -13,7 +13,7 @@ namespace Estagio.WinForm
 {
     public partial class frmBaseAterrisagem : frmBase
     {
-        public frmBaseAterrisagem() 
+        public frmBaseAterrisagem()
         {
             InitializeComponent();
 
@@ -22,19 +22,13 @@ namespace Estagio.WinForm
             dgvGeral.AllowUserToDeleteRows = false;
             dgvGeral.AllowUserToResizeColumns = false;
 
-            var colunaId = new DataGridViewTextBoxColumn();
-            colunaId.HeaderText = "Id";
-            colunaId.DataPropertyName = "Id";
-            colunaId.Width = 90;
-            colunaId.ReadOnly = true;
-            dgvGeral.Columns.Add(colunaId);
+            var primeiraColuna = new DataGridViewTextBoxColumn();
+            primeiraColuna = InformeDadosDaPrimeiraColuna();
+            dgvGeral.Columns.Add(primeiraColuna);
 
-            var colunaDescricao = new DataGridViewTextBoxColumn();
-            colunaDescricao.HeaderText = "Descrição";
-            colunaDescricao.DataPropertyName = "Descricao";
-            colunaDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colunaDescricao.ReadOnly = true;
-            dgvGeral.Columns.Add(colunaDescricao);
+            var segundaColuna = new DataGridViewTextBoxColumn();
+            segundaColuna = InformeDadosDaSegundaColuna();
+            dgvGeral.Columns.Add(segundaColuna);
         }
 
         protected override void OnShown(EventArgs e)
@@ -50,37 +44,27 @@ namespace Estagio.WinForm
             var resultado = frm.ShowDialog();
             if (resultado == DialogResult.OK)
             {
-                MessageBox.Show(ObtenhaMensagemBotaoOk());
+                MessageBox.Show(ObtenhaMensagemDeCadastradoConcluido(), "Aviso" , MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             bsGeral.DataSource = ObtenhaListaDeDados();
             bsGeral.ResetBindings(false);
         }
 
-        protected virtual IEnumerable<object> ObtenhaListaDeDados()
+        private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            return RepositorioDeProduto.Instancia.GetAll();
+            var itemSelecioando = ObtenhaItemSelecionado();
+            if (itemSelecioando == null)
+            {
+                ExibaMensagemDeNaoSelecionado();
+                return;
+            }
+            var frm = CrieFormularioEdicao(itemSelecioando);
+            var resultado = frm.ShowDialog();
+            if (resultado == DialogResult.OK)
+            {
+                MessageBox.Show(ObtenhaMensagemDeEdicaoConcluido(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-
-        protected virtual string ObtenhaMensagemBotaoOk()
-        {
-            return "Clicou em Ok!";
-        }
-
-        protected virtual Form CrieFormularioEdicao()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected virtual Form CrieFormularioNovo()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected object ObtenhaItemSelecionado()
-        {
-            return bsGeral.Current;
-        }
-
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -99,6 +83,47 @@ namespace Estagio.WinForm
             }
 
         }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        protected virtual IEnumerable<object> ObtenhaListaDeDados()
+        {
+            return RepositorioDeProduto.Instancia.GetAll();
+        }
+
+        protected virtual DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual DataGridViewTextBoxColumn InformeDadosDaSegundaColuna()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual string ObtenhaMensagemDeCadastradoConcluido()
+        {
+            return "Clicou em Ok!";
+        }
+
+        protected virtual Form CrieFormularioEdicao(object itemSelecionado)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual Form CrieFormularioNovo()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected object ObtenhaItemSelecionado()
+        {
+            return bsGeral.Current;
+        }
+     
         protected virtual void RemovaItemDaLista(object itemSelecioando)
         {
             throw new NotImplementedException();
@@ -113,34 +138,11 @@ namespace Estagio.WinForm
         {
             return bsGeral.Current;
         }
-
-        private void btnEditar_Click_1(object sender, EventArgs e)
+       
+        protected virtual string ObtenhaMensagemDeEdicaoConcluido()
         {
-            var itemSelecioando = ObtenhaItemSelecionado();
-            if (itemSelecioando == null)
-            {
-                ExibaMensagemDeNaoSelecionado();
-                return;
-            }
-            EditaValor(itemSelecioando);
-            var frm = CrieFormularioEdicao();
-
-
-            var resultado = frm.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-                MessageBox.Show(ObtenhaMensagemBotaoOk());
-            }
+            return "Clicou em Ok!";
         }
 
-        protected virtual void EditaValor(object itemSelecionado)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

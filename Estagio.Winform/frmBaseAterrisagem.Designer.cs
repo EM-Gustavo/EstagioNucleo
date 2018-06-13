@@ -50,19 +50,16 @@
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Size = new System.Drawing.Size(675, 383);
             // 
-            // dgvProdutos
+            // dgvGeral
             // 
             this.dgvGeral.AutoGenerateColumns = false;
             this.dgvGeral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGeral.DataSource = this.bsGeral;
             this.dgvGeral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGeral.Location = new System.Drawing.Point(0, 26);
-            this.dgvGeral.Name = "dgvProdutos";
+            this.dgvGeral.Name = "dgvGeral";
             this.dgvGeral.Size = new System.Drawing.Size(585, 355);
             this.dgvGeral.TabIndex = 3;
-            // 
-            // bsProdutos
-            // 
             // 
             // txtInfoParaPesquisa
             // 
@@ -147,11 +144,11 @@
 
         private System.Windows.Forms.DataGridView dgvGeral;
         private System.Windows.Forms.BindingSource bsGeral;
-        private System.Windows.Forms.TextBox txtInfoParaPesquisa;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnFechar;
+        protected System.Windows.Forms.TextBox txtInfoParaPesquisa;
     }
 }

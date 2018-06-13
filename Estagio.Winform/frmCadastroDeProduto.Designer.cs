@@ -34,6 +34,7 @@
             this.currentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsProdutos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +70,13 @@
             this.currentDataGridViewTextBoxColumn3.Name = "currentDataGridViewTextBoxColumn3";
             this.currentDataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // currentDataGridViewTextBoxColumn4
+            // 
+            this.currentDataGridViewTextBoxColumn4.DataPropertyName = "Current";
+            this.currentDataGridViewTextBoxColumn4.HeaderText = "Current";
+            this.currentDataGridViewTextBoxColumn4.Name = "currentDataGridViewTextBoxColumn4";
+            this.currentDataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // frmCadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,5 +98,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn currentDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currentDataGridViewTextBoxColumn4;
     }
 }

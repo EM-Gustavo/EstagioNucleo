@@ -35,34 +35,49 @@ namespace Estagio.WinForm
             RepositorioDeProduto.Instancia.Add(produto2);
         }
 
+        protected override DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
+        {
+            var primeiraColuna = new DataGridViewTextBoxColumn();
+            primeiraColuna.HeaderText = "Id";
+            primeiraColuna.DataPropertyName = "Id";
+            primeiraColuna.Width = 90;
+            primeiraColuna.ReadOnly = true;
+            return (primeiraColuna);
+        }
+
+        protected override DataGridViewTextBoxColumn InformeDadosDaSegundaColuna()
+        {
+            var segundaColuna = new DataGridViewTextBoxColumn();
+            segundaColuna.HeaderText = "Descrição";
+            segundaColuna.DataPropertyName = "Descricao";
+            segundaColuna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            segundaColuna.ReadOnly = true;
+            return (segundaColuna);
+        }
+
         protected override void RemovaItemDaLista(object itemSelecioando)
         {
             RepositorioDeProduto.Instancia.Delete((Produto)itemSelecioando);
         }
-
-        //protected override void EditaValor(object itemSelecionado)
-        //{
-        //    EnviaValor((Produto)itemSelecionado);
-        //}
-
-        //protected virtual void EnviaValor(Produto itemSelecionado)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         protected override Form CrieFormularioNovo()
         {
             return new frmNovoProduto();
         }
 
-        protected override Form CrieFormularioEdicao()
+        protected override Form CrieFormularioEdicao(object produto)
         {
-            return new frmEditarProduto();
+            return new frmEditarProduto((Produto)produto);
         }
 
-        protected override string ObtenhaMensagemBotaoOk()
+        protected override string ObtenhaMensagemDeCadastradoConcluido()
         {
-            return "Cadastrou Produto";
+            return "Cadastro de produto realizado";
+        }
+
+        protected override string ObtenhaMensagemDeEdicaoConcluido()
+        {
+            return "Edição de produto realizado";
         }
 
         protected override DialogResult ExibaMensagemDeNaoSelecionado()
