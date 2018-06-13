@@ -61,7 +61,7 @@ namespace Estagio.WinForm
             var resultado = frm.ShowDialog();
             if (resultado == DialogResult.OK)
             {
-                MessageBox.Show(ObtenhaMensagemDeEdicaoConcluido(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ObtenhaMensagemDeEdicaoConcluida(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             AtualizeDataGrid();
@@ -139,7 +139,7 @@ namespace Estagio.WinForm
             return MessageBox.Show("Selecione item");
         }
        
-        protected virtual string ObtenhaMensagemDeEdicaoConcluido()
+        protected virtual string ObtenhaMensagemDeEdicaoConcluida()
         {
             return "Clicou em Ok!";
         }

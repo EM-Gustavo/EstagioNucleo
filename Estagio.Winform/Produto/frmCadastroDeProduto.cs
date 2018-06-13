@@ -73,7 +73,7 @@ namespace Estagio.WinForm
             return "Cadastro de produto realizado";
         }
 
-        protected override string ObtenhaMensagemDeEdicaoConcluido()
+        protected override string ObtenhaMensagemDeEdicaoConcluida()
         {
             return "Edição de produto realizado";
         }
@@ -86,6 +86,11 @@ namespace Estagio.WinForm
         protected override IEnumerable<object> ObtenhaListaDeDados()
         {
             return RepositorioDeProduto.Instancia.GetAll();
+        }
+
+        protected override string ObtenhaMensagemDeExlusao()
+        {
+            return "Produto excluído!";
         }
     }
 }

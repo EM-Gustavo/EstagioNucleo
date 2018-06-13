@@ -78,16 +78,28 @@
     <Compile Include="frmBaseNovoOuEditar.Designer.cs">
       <DependentUpon>frmBaseNovoOuEditar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastroDeProduto.cs">
+    <Compile Include="Fornecedor\frmCadastroDeFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastroDeProduto.Designer.cs">
+    <Compile Include="Fornecedor\frmCadastroDeFornecedor.Designer.cs">
+      <DependentUpon>frmCadastroDeFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produto\frmCadastroDeProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produto\frmCadastroDeProduto.Designer.cs">
       <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditarOuCadastrarProduto.cs">
+    <Compile Include="Fornecedor\frmEditarOuCadastrarForncedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEditarOuCadastrarProduto.Designer.cs">
+    <Compile Include="Fornecedor\frmEditarOuCadastrarForncedor.Designer.cs">
+      <DependentUpon>frmEditarOuCadastrarForncedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produto\frmEditarOuCadastrarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produto\frmEditarOuCadastrarProduto.Designer.cs">
       <DependentUpon>frmEditarOuCadastrarProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="MetodosDeExtensaoFormatacaoDeControles.cs" />
@@ -102,10 +114,13 @@
     <EmbeddedResource Include="frmBaseNovoOuEditar.resx">
       <DependentUpon>frmBaseNovoOuEditar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastroDeProduto.resx">
+    <EmbeddedResource Include="Produto\frmCadastroDeProduto.resx">
       <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEditarOuCadastrarProduto.resx">
+    <EmbeddedResource Include="Fornecedor\frmEditarOuCadastrarForncedor.resx">
+      <DependentUpon>frmEditarOuCadastrarForncedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produto\frmEditarOuCadastrarProduto.resx">
       <DependentUpon>frmEditarOuCadastrarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
