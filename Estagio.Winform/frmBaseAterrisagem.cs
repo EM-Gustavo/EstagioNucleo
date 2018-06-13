@@ -34,20 +34,19 @@ namespace Estagio.WinForm
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            bsGeral.DataSource = ObtenhaListaDeDados();
-            bsGeral.ResetBindings(false);
+            AtualizeDataGrid();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            var frm = CrieFormularioNovo();
+            var frm = CrieFormularioNovoOuEdicao(null);
             var resultado = frm.ShowDialog();
             if (resultado == DialogResult.OK)
             {
                 MessageBox.Show(ObtenhaMensagemDeCadastradoConcluido(), "Aviso" , MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            bsGeral.DataSource = ObtenhaListaDeDados();
-            bsGeral.ResetBindings(false);
+
+            AtualizeDataGrid();
         }
 
         private void btnEditar_Click_1(object sender, EventArgs e)
@@ -58,12 +57,14 @@ namespace Estagio.WinForm
                 ExibaMensagemDeNaoSelecionado();
                 return;
             }
-            var frm = CrieFormularioEdicao(itemSelecioando);
+            var frm = CrieFormularioNovoOuEdicao(itemSelecioando);
             var resultado = frm.ShowDialog();
             if (resultado == DialogResult.OK)
             {
                 MessageBox.Show(ObtenhaMensagemDeEdicaoConcluido(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            AtualizeDataGrid();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -74,24 +75,33 @@ namespace Estagio.WinForm
                 ExibaMensagemDeNaoSelecionado();
                 return;
             }
-            var resultado = MessageBox.Show("Deseja excluir o produto?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var resultado = MessageBox.Show("Deseja excluir o item?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 RemovaItemDaLista(itemSelecioando);
-                bsGeral.DataSource = ObtenhaListaDeDados();
-                bsGeral.ResetBindings(false);
+                AtualizeDataGrid();
+
+                MessageBox.Show(ObtenhaMensagemDeExlusao(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void btnFechar_Click_1(object sender, EventArgs e)
         {
             Close();
         }
 
+
+
+        private void AtualizeDataGrid()
+        {
+            bsGeral.DataSource = ObtenhaListaDeDados();
+            bsGeral.ResetBindings(false);
+        }
+
         protected virtual IEnumerable<object> ObtenhaListaDeDados()
         {
-            return RepositorioDeProduto.Instancia.GetAll();
+            throw new NotImplementedException();
         }
 
         protected virtual DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
@@ -109,12 +119,7 @@ namespace Estagio.WinForm
             return "Clicou em Ok!";
         }
 
-        protected virtual Form CrieFormularioEdicao(object itemSelecionado)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected virtual Form CrieFormularioNovo()
+        protected virtual Form CrieFormularioNovoOuEdicao(object itemSelecionado)
         {
             throw new NotImplementedException();
         }
@@ -131,17 +136,17 @@ namespace Estagio.WinForm
 
         protected virtual DialogResult ExibaMensagemDeNaoSelecionado()
         {
-            return MessageBox.Show("Selecione");
-        }
-
-        protected virtual object ObtenhaObjSelecionado()
-        {
-            return bsGeral.Current;
+            return MessageBox.Show("Selecione item");
         }
        
         protected virtual string ObtenhaMensagemDeEdicaoConcluido()
         {
             return "Clicou em Ok!";
+        }
+
+        protected virtual string ObtenhaMensagemDeExlusao()
+        {
+            return "Item excluído!";
         }
 
     }

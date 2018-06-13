@@ -60,15 +60,13 @@ namespace Estagio.WinForm
             RepositorioDeProduto.Instancia.Delete((Produto)itemSelecioando);
         }
 
-        protected override Form CrieFormularioNovo()
+        protected override Form CrieFormularioNovoOuEdicao(object produto)
         {
-            return new frmNovoProduto();
+            var frmComProduto = new frmEditarOuCadastrarProduto();
+            frmComProduto.Produto = (Produto)produto;
+            return frmComProduto;
         }
 
-        protected override Form CrieFormularioEdicao(object produto)
-        {
-            return new frmEditarProduto((Produto)produto);
-        }
 
         protected override string ObtenhaMensagemDeCadastradoConcluido()
         {

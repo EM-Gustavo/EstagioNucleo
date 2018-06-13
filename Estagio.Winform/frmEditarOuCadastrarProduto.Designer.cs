@@ -1,6 +1,6 @@
 ﻿namespace Estagio.WinForm
 {
-    partial class frmEditarProduto
+    partial class frmEditarOuCadastrarProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -58,14 +58,14 @@
             this.txtDescricao.Location = new System.Drawing.Point(123, 20);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(130, 20);
-            this.txtDescricao.TabIndex = 24;
+            this.txtDescricao.TabIndex = 0;
             // 
             // txtPrecoUnitario
             // 
             this.txtPrecoUnitario.Location = new System.Drawing.Point(123, 99);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
             this.txtPrecoUnitario.Size = new System.Drawing.Size(128, 20);
-            this.txtPrecoUnitario.TabIndex = 26;
+            this.txtPrecoUnitario.TabIndex = 2;
             this.txtPrecoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
@@ -103,15 +103,15 @@
             this.txtQuantidade.Location = new System.Drawing.Point(123, 60);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(128, 20);
-            this.txtQuantidade.TabIndex = 25;
+            this.txtQuantidade.TabIndex = 1;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // frmEditarProduto
+            // frmEditarOuCadastrarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 342);
-            this.Name = "frmEditarProduto";
+            this.Name = "frmEditarOuCadastrarProduto";
             this.Text = "frmEditarProduto";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -23,10 +23,6 @@ namespace Estagio.Nucleo.Repositorio
 
         public void Add(Produto item)
         {
-            //if (_produtos.Contains(item))
-            //{
-            //    throw new ApplicationException("Produto já existente");
-            //}
             _produtos.Add(item);
         }
 
@@ -48,7 +44,6 @@ namespace Estagio.Nucleo.Repositorio
 
         public IEnumerable<Produto> GetAll()
         {
-            //return new List<Produto>(_produtos);
             return _produtos.Select(c => (Produto)c.Clone());
         }
 

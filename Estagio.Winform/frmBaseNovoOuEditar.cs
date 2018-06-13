@@ -17,13 +17,30 @@ namespace Estagio.WinForm
             InitializeComponent();
         }
 
-        protected virtual void btnConfirmar_Click_1(object sender, EventArgs e)
+        private void btnConfirmar_Click_1(object sender, EventArgs e)
         {
+            if (!PodeConfirmar())
+            {
+                return;
+            }
+            GraveElemento();
+            DialogResult = DialogResult.OK;
+            Close();
+        }
 
+        protected virtual bool PodeConfirmar()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual void GraveElemento()
+        {
+            throw new NotImplementedException();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

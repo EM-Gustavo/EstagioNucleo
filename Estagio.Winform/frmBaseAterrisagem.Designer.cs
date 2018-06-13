@@ -106,9 +106,10 @@
             this.btnFechar.Location = new System.Drawing.Point(3, 117);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(80, 32);
-            this.btnFechar.TabIndex = 1;
+            this.btnFechar.TabIndex = 3;
             this.btnFechar.Text = "&Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click_1);
             // 
             // flowLayoutPanel1
             // 

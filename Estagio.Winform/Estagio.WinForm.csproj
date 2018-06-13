@@ -84,18 +84,13 @@
     <Compile Include="frmCadastroDeProduto.Designer.cs">
       <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditarProduto.cs">
+    <Compile Include="frmEditarOuCadastrarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEditarProduto.Designer.cs">
-      <DependentUpon>frmEditarProduto.cs</DependentUpon>
+    <Compile Include="frmEditarOuCadastrarProduto.Designer.cs">
+      <DependentUpon>frmEditarOuCadastrarProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNovoProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNovoProduto.Designer.cs">
-      <DependentUpon>frmNovoProduto.cs</DependentUpon>
-    </Compile>
+    <Compile Include="MetodosDeExtensaoFormatacaoDeControles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBase.resx">
@@ -110,11 +105,8 @@
     <EmbeddedResource Include="frmCadastroDeProduto.resx">
       <DependentUpon>frmCadastroDeProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEditarProduto.resx">
-      <DependentUpon>frmEditarProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNovoProduto.resx">
-      <DependentUpon>frmNovoProduto.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditarOuCadastrarProduto.resx">
+      <DependentUpon>frmEditarOuCadastrarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
