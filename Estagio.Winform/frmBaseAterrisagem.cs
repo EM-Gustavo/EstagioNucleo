@@ -95,6 +95,18 @@ namespace Estagio.WinForm
         {
         }
 
+        private void txtInfoParaPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ExibaItemPesquisado();
+            }
+        }
+
+        protected virtual void ExibaItemPesquisado()
+        {
+        }
+
         protected virtual string ObtenhaMensagemDeCadastradoConcluido()
         {
             return "Cadastro realizado com sucesso!";

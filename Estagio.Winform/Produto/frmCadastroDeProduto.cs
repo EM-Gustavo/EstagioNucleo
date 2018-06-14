@@ -15,7 +15,7 @@ namespace Estagio.WinForm
 {
     public partial class frmCadastroDeProduto : frmBaseAterrisagem
     {
-        public frmCadastroDeProduto() 
+        public frmCadastroDeProduto()
         {
             InitializeComponent();
         }
@@ -25,21 +25,22 @@ namespace Estagio.WinForm
             var produto = new Produto();
             produto.Id = 1;
             produto.Descricao = "refrigerante";
-            produto.PrecoUnitario = 4;
+            produto.PrecoUnitario = 4.00m;
             RepositorioDeProduto.Instancia.Add(produto);
 
             var produto2 = new Produto();
             produto2.Id = 2;
             produto2.Descricao = "suco";
-            produto2.PrecoUnitario = 3;
+            produto2.PrecoUnitario = 3.00m;
             RepositorioDeProduto.Instancia.Add(produto2);
         }
 
         protected override void MonteColunas(DataGridView dgvGeral)
         {
-            dgvGeral.CrieColuna("Id", "Id" , Width = 90);
-            dgvGeral.CrieColuna( "Descrição", "Descricao", DataGridViewAutoSizeColumnMode.Fill);
+            dgvGeral.CrieColuna("Id", "Id", Width = 90);
+            dgvGeral.CrieColuna("Descrição", "Descricao", DataGridViewAutoSizeColumnMode.Fill);
         }
+
 
         protected override void RemovaItemDaLista(object itemSelecioando)
         {
@@ -73,7 +74,11 @@ namespace Estagio.WinForm
             bsGeral.DataSource = RepositorioDeProduto.Instancia.GetAll();
             bsGeral.ResetBindings(false);
         }
-
+        protected override void ExibaItemPesquisado()
+        {
+            bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll().Where(p => p.Descricao.ToUpper().Contains(txtInfoParaPesquisa.Text.ToUpper())).ToList();
+            bsProdutos.ResetBindings(false);
+        }
 
         protected override string ObtenhaMensagemDeExlusao()
         {

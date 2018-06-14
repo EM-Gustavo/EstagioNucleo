@@ -45,9 +45,9 @@ namespace Estagio.WinForm
 
         private static void FormatoDecimal_Leave(object sender, EventArgs e)
         {
-            
+            var textbox = (TextBox)sender;
+            if (String.IsNullOrEmpty(textbox.Text)) return;
+            textbox.Text = Convert.ToDecimal(textbox.Text).ToString("0.00");
         }
-
-
     }
 }

@@ -66,8 +66,8 @@ namespace Estagio.WinForm
         protected override bool PodeConfirmar()
         {
             if (!FoiInformadoOCampo(txtDescricao, "Informe a descrição")) return false;
-            if (!FoiInformadoOCampo(txtPrecoUnitario, "Informe preço unitário")) return false;
             if (!FoiInformadoOCampo(txtQuantidade, "Informe a quantidade unitária")) return false;
+            if (!FoiInformadoOCampo(txtPrecoUnitario, "Informe preço unitário")) return false;
             return true;
         }
     }
