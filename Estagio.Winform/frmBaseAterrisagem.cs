@@ -87,35 +87,12 @@ namespace Estagio.WinForm
             Close();
         }
 
-
-        private void txtInfoParaPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                bsGeral.DataSource = ObtenhaResultadoDaPesquisa();
-                bsGeral.ResetBindings(false);
-            }
-        }
-
-        protected virtual List<Nucleo.Produto> ObtenhaResultadoDaPesquisa()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AtualizeDataGrid()
-        {
-            bsGeral.DataSource = ObtenhaListaDeDados();
-            bsGeral.ResetBindings(false);
-        }
-
-        protected virtual IEnumerable<object> ObtenhaListaDeDados()
-        {
-            throw new NotImplementedException();
+        protected virtual void AtualizeDataGrid()
+        {            
         }
 
         protected virtual void MonteColunas(DataGridView dgvGeral)
         {
-            throw new NotImplementedException();
         }
 
         protected virtual string ObtenhaMensagemDeCadastradoConcluido()
@@ -135,7 +112,6 @@ namespace Estagio.WinForm
      
         protected virtual void RemovaItemDaLista(object itemSelecioando)
         {
-            throw new NotImplementedException();
         }
 
         protected virtual DialogResult ExibaMensagemDeNaoSelecionado()

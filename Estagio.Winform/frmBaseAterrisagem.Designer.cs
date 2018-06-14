@@ -69,7 +69,6 @@
             this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
             this.txtInfoParaPesquisa.Size = new System.Drawing.Size(585, 26);
             this.txtInfoParaPesquisa.TabIndex = 5;
-            this.txtInfoParaPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInfoParaPesquisa_KeyDown);
             // 
             // btnNovo
             // 
@@ -144,12 +143,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvGeral;
-        private System.Windows.Forms.BindingSource bsGeral;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnFechar;
         protected System.Windows.Forms.TextBox txtInfoParaPesquisa;
+        protected System.Windows.Forms.BindingSource bsGeral;
     }
 }

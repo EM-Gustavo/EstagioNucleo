@@ -64,9 +64,10 @@ namespace Estagio.WinForm
             return MessageBox.Show("Selecione Fornecedor", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        protected override IEnumerable<object> ObtenhaListaDeDados()
+        protected override void AtualizeDataGrid()
         {
-            return RepositorioDeFornecedor.Instancia.GetAll();
+            bsGeral.DataSource = RepositorioDeFornecedor.Instancia.GetAll();
+            bsGeral.ResetBindings(false);
         }
 
         protected override string ObtenhaMensagemDeExlusao()

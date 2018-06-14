@@ -53,11 +53,6 @@ namespace Estagio.WinForm
             return frmComProduto;
         }
 
-        protected override List<Nucleo.Produto> ObtenhaResultadoDaPesquisa()
-        {
-            return RepositorioDeProduto.Instancia.GetAll().Where(p => p.Descricao.ToUpper().Contains(txtInfoParaPesquisa.Text.ToUpper())).ToList();
-        }
-
         protected override string ObtenhaMensagemDeCadastradoConcluido()
         {
             return "Cadastro de produto realizado";
@@ -73,10 +68,12 @@ namespace Estagio.WinForm
             return MessageBox.Show("Selecione Produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        protected override IEnumerable<object> ObtenhaListaDeDados()
+        protected override void AtualizeDataGrid()
         {
-            return RepositorioDeProduto.Instancia.GetAll();
+            bsGeral.DataSource = RepositorioDeProduto.Instancia.GetAll();
+            bsGeral.ResetBindings(false);
         }
+
 
         protected override string ObtenhaMensagemDeExlusao()
         {
