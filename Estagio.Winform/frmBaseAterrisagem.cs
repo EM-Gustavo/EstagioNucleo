@@ -82,7 +82,7 @@ namespace Estagio.WinForm
 
         }
 
-        private void btnFechar_Click_1(object sender, EventArgs e)
+        private void btnFechar_Click_1(object sender, EventArgs e)  
         {
             Close();
         }

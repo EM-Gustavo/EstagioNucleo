@@ -27,5 +27,27 @@ namespace Estagio.WinForm
             }
             return true;
         }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ExibaStatusCarregando();
+            System.Threading.Thread.Sleep(1000);
+            ExibaStatusPronto();
+        }
+
+        protected void ExibaStatusCarregando()
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            ssBarraDeStatus.Text = "Aguarde Carregando...";
+            Update();
+        }
+
+        protected void ExibaStatusPronto()
+        {
+            Cursor.Current = Cursors.Default;
+            ssBarraDeStatus.Text = "Pronto";
+            Update();
+        }
     }
 }
