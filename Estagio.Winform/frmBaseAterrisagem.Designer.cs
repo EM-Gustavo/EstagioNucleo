@@ -130,6 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 504);
             this.Name = "frmBaseAterrisagem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBaseAterrisagem";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

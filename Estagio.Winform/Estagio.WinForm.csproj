@@ -84,6 +84,18 @@
     <Compile Include="Fornecedor\frmCadastroDeFornecedor.Designer.cs">
       <DependentUpon>frmCadastroDeFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cliente\frmCadastroDeCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmCadastroDeCliente.Designer.cs">
+      <DependentUpon>frmCadastroDeCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmEditarOuCadastrarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmEditarOuCadastrarCliente.Designer.cs">
+      <DependentUpon>frmEditarOuCadastrarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produto\frmCadastroDeProduto.cs">
       <SubType>Form</SubType>
     </Compile>

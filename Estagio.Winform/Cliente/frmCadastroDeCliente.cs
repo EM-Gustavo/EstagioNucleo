@@ -12,22 +12,22 @@ using Estagio.Nucleo.Repositorio;
 
 namespace Estagio.WinForm
 {
-    public partial class frmCadastroDeFornecedor : frmBaseAterrisagem
-    { 
-        public frmCadastroDeFornecedor()
+    public partial class frmCadastroDeCliente : frmBaseAterrisagem
+    {
+        public frmCadastroDeCliente()
         {
             InitializeComponent();
         }
 
-        private void frmCadastroDeProduto_Load(object sender, EventArgs e)
+        private void frmCadastroDeCliente_Load(object sender, EventArgs e)
         {
-            var fornecedor1 = new Fornecedor();
-            fornecedor1.Id = 1;
-            fornecedor1.Nome = "Carlos";
-            var CNPJ = new CPFCNPJ("38.117.767/0001-78");
-            fornecedor1.CPFCNPJ = CNPJ;
+            var cliente1 = new Cliente();
+            cliente1.Id = 1;
+            cliente1.Nome = "André";
+            var CPF = new CPFCNPJ("874.948.052-90");
+            cliente1.CPFCNPJ = CPF;
 
-            RepositorioDeFornecedor.Instancia.Add(fornecedor1);
+            RepositorioDeCliente.Instancia.Add(cliente1);
         }
 
         protected override DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
@@ -52,40 +52,40 @@ namespace Estagio.WinForm
 
         protected override void RemovaItemDaLista(object itemSelecioando)
         {
-            RepositorioDeFornecedor.Instancia.Delete((Fornecedor)itemSelecioando);
+            RepositorioDeCliente.Instancia.Delete((Cliente)itemSelecioando);
         }
 
-        protected override Form CrieFormularioNovoOuEdicao(object fornecedor)
+        protected override Form CrieFormularioNovoOuEdicao(object cliente)
         {
-            var frmComFornecedor = new frmEditarOuCadastrarForncedor();
-            frmComFornecedor.Fornecedor = (Fornecedor)fornecedor;
-            return frmComFornecedor;
+            var frmComCliente = new frmEditarOuCadastrarCliente();
+            frmComCliente.Cliente = (Cliente)cliente;
+            return frmComCliente;
         }
 
 
         protected override string ObtenhaMensagemDeCadastradoConcluido()
         {
-            return "Cadastro de fornecedor realizado";
+            return "Cadastro de cliente realizado";
         }
 
         protected override string ObtenhaMensagemDeEdicaoConcluida()
         {
-            return "Edição de fornecedor realizado";
+            return "Edição de cliente realizado";
         }
 
         protected override DialogResult ExibaMensagemDeNaoSelecionado()
         {
-            return MessageBox.Show("Selecione Fornecedor", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return MessageBox.Show("Selecione cliente", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         protected override IEnumerable<object> ObtenhaListaDeDados()
         {
-            return RepositorioDeFornecedor.Instancia.GetAll();
+            return RepositorioDeCliente.Instancia.GetAll();
         }
 
         protected override string ObtenhaMensagemDeExlusao()
         {
-            return "Fornecedor excluído!";
+            return "Cliente excluído!";
         }
     }
 }

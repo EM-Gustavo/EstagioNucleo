@@ -82,6 +82,7 @@
             this.Controls.Add(this.ssBarraDeStatus);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmBase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ssBarraDeStatus.ResumeLayout(false);
             this.ssBarraDeStatus.PerformLayout();

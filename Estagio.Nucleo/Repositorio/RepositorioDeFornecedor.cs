@@ -17,6 +17,8 @@ namespace Estagio.Nucleo.Repositorio
 
         private List<Fornecedor> _fornecedores = new List<Fornecedor>();
 
+        public IEnumerable<Fornecedor> Fornecedor => _fornecedores.AsReadOnly();
+
         public void Add(Fornecedor item)
         {
             _fornecedores.Add(item);

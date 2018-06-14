@@ -12,11 +12,11 @@ using Estagio.Nucleo.Repositorio;
 
 namespace Estagio.WinForm
 {
-    public partial class frmEditarOuCadastrarForncedor : frmBaseNovoOuEditar
+    public partial class frmEditarOuCadastrarCliente : frmBaseNovoOuEditar
     {
-        public Fornecedor Fornecedor{ get; set; }
+        public Cliente Cliente { get; set; }
 
-        public frmEditarOuCadastrarForncedor()
+        public frmEditarOuCadastrarCliente()
         {
             InitializeComponent();
             txtNome.FormatoTexto();
@@ -25,10 +25,10 @@ namespace Estagio.WinForm
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            if(Fornecedor != null)
+            if (Cliente != null)
             {
-                txtNome.Text = Fornecedor.Nome;
-                txtCNPJ.Text = Fornecedor.CPFCNPJ.ToString();
+                txtNome.Text = Cliente.Nome;
+                txtCPF.Text = Cliente.CPFCNPJ.ToString();
             }
         }
 
@@ -36,34 +36,34 @@ namespace Estagio.WinForm
         {
             InsereValores();
 
-            if (EhNovoFornecedor())
+            if (EhNovoCliente())
             {
-                RepositorioDeFornecedor.Instancia.Add(Fornecedor);
+                RepositorioDeCliente.Instancia.Add(Cliente);
             }
             else
             {
-                RepositorioDeFornecedor.Instancia.UpDate(Fornecedor);
+                RepositorioDeCliente.Instancia.UpDate(Cliente);
             }
         }
 
 
-        private bool EhNovoFornecedor()
+        private bool EhNovoCliente()
         {
-            return Fornecedor == null || Fornecedor.Id == 0;
+            return Cliente == null || Cliente.Id == 0;
         }
 
         private void InsereValores()
         {
-            Fornecedor = Fornecedor ?? new Fornecedor();
-            Fornecedor.Nome = txtNome.Text;
-            var CNPJ = new CPFCNPJ(txtCNPJ.Text);
-            Fornecedor.CPFCNPJ = CNPJ;
+            Cliente = Cliente ?? new Cliente();
+            Cliente.Nome = txtNome.Text;
+            var CPF = new CPFCNPJ(txtCPF.Text);
+            Cliente.CPFCNPJ = CPF;
         }
 
         protected override bool PodeConfirmar()
         {
             if (!FoiInformadoOCampo(txtNome, "Informe nome")) return false;
-            if (!FoiInformadoOCampo(txtCNPJ, "Informe CNPJ")) return false;
+            if (!FoiInformadoOCampo(txtCPF, "Informe CNPJ")) return false;
             return true;
         }
     }

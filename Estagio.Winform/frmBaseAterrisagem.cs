@@ -116,7 +116,7 @@ namespace Estagio.WinForm
 
         protected virtual string ObtenhaMensagemDeCadastradoConcluido()
         {
-            return "Clicou em Ok!";
+            return "Cadastro realizado com sucesso!";
         }
 
         protected virtual Form CrieFormularioNovoOuEdicao(object itemSelecionado)
@@ -141,7 +141,7 @@ namespace Estagio.WinForm
        
         protected virtual string ObtenhaMensagemDeEdicaoConcluida()
         {
-            return "Clicou em Ok!";
+            return "Edição realizada com sucesso!";
         }
 
         protected virtual string ObtenhaMensagemDeExlusao()
