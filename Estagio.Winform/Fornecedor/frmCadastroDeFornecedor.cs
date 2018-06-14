@@ -30,24 +30,10 @@ namespace Estagio.WinForm
             RepositorioDeFornecedor.Instancia.Add(fornecedor1);
         }
 
-        protected override DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
+        protected override void MonteColunas(DataGridView dgvGeral)
         {
-            var primeiraColuna = new DataGridViewTextBoxColumn();
-            primeiraColuna.HeaderText = "Id";
-            primeiraColuna.DataPropertyName = "Id";
-            primeiraColuna.Width = 90;
-            primeiraColuna.ReadOnly = true;
-            return (primeiraColuna);
-        }
-
-        protected override DataGridViewTextBoxColumn InformeDadosDaSegundaColuna()
-        {
-            var segundaColuna = new DataGridViewTextBoxColumn();
-            segundaColuna.HeaderText = "Nome";
-            segundaColuna.DataPropertyName = "Nome";
-            segundaColuna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            segundaColuna.ReadOnly = true;
-            return (segundaColuna);
+            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Id", "Id", 90);
+            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
         }
 
         protected override void RemovaItemDaLista(object itemSelecioando)

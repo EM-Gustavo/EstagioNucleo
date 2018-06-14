@@ -96,6 +96,7 @@
     <Compile Include="Cliente\frmEditarOuCadastrarCliente.Designer.cs">
       <DependentUpon>frmEditarOuCadastrarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="MetodosDeExtenssaoCrieColunas.cs" />
     <Compile Include="Produto\frmCadastroDeProduto.cs">
       <SubType>Form</SubType>
     </Compile>

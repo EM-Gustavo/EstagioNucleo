@@ -69,7 +69,7 @@
             this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
             this.txtInfoParaPesquisa.Size = new System.Drawing.Size(585, 26);
             this.txtInfoParaPesquisa.TabIndex = 5;
-            this.txtInfoParaPesquisa.Text = "Informar as iniciais do nome";
+            this.txtInfoParaPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInfoParaPesquisa_KeyDown);
             // 
             // btnNovo
             // 
@@ -130,7 +130,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 504);
             this.Name = "frmBaseAterrisagem";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBaseAterrisagem";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

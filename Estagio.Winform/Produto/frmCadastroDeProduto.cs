@@ -35,24 +35,10 @@ namespace Estagio.WinForm
             RepositorioDeProduto.Instancia.Add(produto2);
         }
 
-        protected override DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
+        protected override void MonteColunas(DataGridView dgvGeral)
         {
-            var primeiraColuna = new DataGridViewTextBoxColumn();
-            primeiraColuna.HeaderText = "Id";
-            primeiraColuna.DataPropertyName = "Id";
-            primeiraColuna.Width = 90;
-            primeiraColuna.ReadOnly = true;
-            return (primeiraColuna);
-        }
-
-        protected override DataGridViewTextBoxColumn InformeDadosDaSegundaColuna()
-        {
-            var segundaColuna = new DataGridViewTextBoxColumn();
-            segundaColuna.HeaderText = "Descrição";
-            segundaColuna.DataPropertyName = "Descricao";
-            segundaColuna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            segundaColuna.ReadOnly = true;
-            return (segundaColuna);
+            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Id", "Id" , Width = 90);
+            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Descrição", "Descricao", DataGridViewAutoSizeColumnMode.Fill);
         }
 
         protected override void RemovaItemDaLista(object itemSelecioando)
@@ -67,6 +53,10 @@ namespace Estagio.WinForm
             return frmComProduto;
         }
 
+        protected override List<Nucleo.Produto> ObtenhaResultadoDaPesquisa()
+        {
+            return RepositorioDeProduto.Instancia.GetAll().Where(p => p.Descricao.ToUpper().Contains(txtInfoParaPesquisa.Text.ToUpper())).ToList();
+        }
 
         protected override string ObtenhaMensagemDeCadastradoConcluido()
         {

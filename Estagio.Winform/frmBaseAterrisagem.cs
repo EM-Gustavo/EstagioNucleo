@@ -21,14 +21,10 @@ namespace Estagio.WinForm
             dgvGeral.AllowUserToAddRows = false;
             dgvGeral.AllowUserToDeleteRows = false;
             dgvGeral.AllowUserToResizeColumns = false;
+            dgvGeral.ReadOnly = true;
 
-            var primeiraColuna = new DataGridViewTextBoxColumn();
-            primeiraColuna = InformeDadosDaPrimeiraColuna();
-            dgvGeral.Columns.Add(primeiraColuna);
+            MonteColunas(dgvGeral);
 
-            var segundaColuna = new DataGridViewTextBoxColumn();
-            segundaColuna = InformeDadosDaSegundaColuna();
-            dgvGeral.Columns.Add(segundaColuna);
         }
 
         protected override void OnShown(EventArgs e)
@@ -92,6 +88,19 @@ namespace Estagio.WinForm
         }
 
 
+        private void txtInfoParaPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bsGeral.DataSource = ObtenhaResultadoDaPesquisa();
+                bsGeral.ResetBindings(false);
+            }
+        }
+
+        protected virtual List<Nucleo.Produto> ObtenhaResultadoDaPesquisa()
+        {
+            throw new NotImplementedException();
+        }
 
         private void AtualizeDataGrid()
         {
@@ -104,12 +113,7 @@ namespace Estagio.WinForm
             throw new NotImplementedException();
         }
 
-        protected virtual DataGridViewTextBoxColumn InformeDadosDaPrimeiraColuna()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected virtual DataGridViewTextBoxColumn InformeDadosDaSegundaColuna()
+        protected virtual void MonteColunas(DataGridView dgvGeral)
         {
             throw new NotImplementedException();
         }
