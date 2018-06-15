@@ -31,7 +31,29 @@ namespace Estagio.Nucleo.Repositorio
 
         public void Delete(Fornecedor item)
         {
+            var sql = "DELETE FROM TBFORNECEDORES WHERE FORNID = @FORNID";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNID", item.Id));
+                cmd.ExecuteNonQuery();
+            }
+        }
 
+        public Fornecedor GetById(int Id)
+        {
+            return null;
+        }
+
+        public void UpDate(Fornecedor item)
+        {
+            var sql = "UPDATE TBFORNECEDORES SET FORNNOME = @FORNNOME, FORNCPFCNPJ = @FORNCPFCNPJ WHERE FORNID = @FORNID";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNNOME", item.Nome));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNCPFCNPJ", item.CPFCNPJ.Numero));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<Fornecedor> GetAll()
@@ -56,13 +78,8 @@ namespace Estagio.Nucleo.Repositorio
             return fornecedores;
         }
 
-        public Fornecedor GetById(int Id)
-        {
-            return null;
-        }
 
-        public void UpDate(Fornecedor item)
-        {
-        }
     }
+    
+
 }

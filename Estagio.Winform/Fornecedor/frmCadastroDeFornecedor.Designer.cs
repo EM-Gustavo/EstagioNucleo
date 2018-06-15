@@ -35,8 +35,14 @@
             this.currentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGeral)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsProdutos)).BeginInit();
             this.SuspendLayout();
+            // 
+            // txtInfoParaPesquisa
+            // 
+            this.txtInfoParaPesquisa.Size = new System.Drawing.Size(553, 26);
             // 
             // panel1
             // 
@@ -77,13 +83,16 @@
             this.currentDataGridViewTextBoxColumn4.Name = "currentDataGridViewTextBoxColumn4";
             this.currentDataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // frmCadastroDeProduto
+            // frmCadastroDeFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 450);
-            this.Name = "frmCadastroDeProduto";
-            this.Text = "frmCadastroDeProduto";
+            this.Name = "frmCadastroDeFornecedor";
+            this.Text = "Cadastro de Fornecedor";
+            ((System.ComponentModel.ISupportInitialize)(this.bsGeral)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -124,6 +124,12 @@
     <Compile Include="MetodosDeExtensaoFormatacaoDeControles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cliente\frmCadastroDeCliente.resx">
+      <DependentUpon>frmCadastroDeCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fornecedor\frmCadastroDeFornecedor.resx">
+      <DependentUpon>frmCadastroDeFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
     </EmbeddedResource>

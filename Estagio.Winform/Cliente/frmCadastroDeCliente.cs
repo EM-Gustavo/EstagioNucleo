@@ -21,13 +21,13 @@ namespace Estagio.WinForm
 
         private void frmCadastroDeCliente_Load(object sender, EventArgs e)
         {
-            var cliente1 = new Cliente();
-            cliente1.Id = 1;
-            cliente1.Nome = "André";
-            var CPF = new CPFCNPJ("874.948.052-90");
-            cliente1.CPFCNPJ = CPF;
+            //var cliente1 = new Cliente();
+            //cliente1.Id = 1;
+            //cliente1.Nome = "André";
+            //var CPF = new CPFCNPJ("874.948.052-90");
+            //cliente1.CPFCNPJ = CPF;
 
-            RepositorioDeCliente.Instancia.Add(cliente1);
+            //RepositorioDeCliente.Instancia.Add(cliente1);
         }
 
         protected override void MonteColunas(DataGridView dgvGeral)

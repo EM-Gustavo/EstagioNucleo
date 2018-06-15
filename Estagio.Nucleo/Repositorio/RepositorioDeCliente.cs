@@ -15,32 +15,71 @@ namespace Estagio.Nucleo.Repositorio
 
         }
 
-        private List<Cliente> _clientes = new List<Cliente>();
-
         public void Add(Cliente item)
         {
-            _clientes.Add(item);
+            item.Id = DBHelper.Instancia.ObtenhaProximoId("CLIEID", "TBCLIENTES");
+
+            var sql = "INSERT INTO TBCLIENTES (CLIEID, CLIENOME, CLIECPFCNPJ) VALUES (@CLIEID, @CLIENOME, @CLIECPFCNPJ)";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIEID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIENOME", item.Nome));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIECPFCNPJ", item.CPFCNPJ.Numero));
+                cmd.ExecuteNonQuery();
+            }
         }
+
+
 
         public void Delete(Cliente item)
         {
-            _clientes.Remove(item);
-        }
-
-        public IEnumerable<Cliente> GetAll()
-        {
-            return _clientes;
+            var sql = "DELETE FROM TBCLIENTES WHERE CLIEID = @CLIEID";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIEID", item.Id));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public Cliente GetById(int Id)
         {
-            return _clientes.Find(x => x.Id == Id);
+            return null;
         }
 
         public void UpDate(Cliente item)
         {
-            _clientes.Remove(GetById(item.Id));
-            _clientes.Add(item);
+            var sql = "UPDATE TBCLIENTES SET  CLIENOME = @CLIENOME, CLIECPFCNPJ = @CLIECPFCNPJ WHERE FORNID = @FORNID";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIEID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIENOME", item.Nome));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIECPFCNPJ", item.CPFCNPJ.Numero));
+                cmd.ExecuteNonQuery();
+            }
         }
+
+        public IEnumerable<Cliente> GetAll()
+        {
+            var clientes = new List<Cliente>();
+
+            var sql = "SELECT CLIEID, CLIENOME, CLIECPFCNPJ FROM TBCLIENTE";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                using (DBDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var cliente = new Cliente();
+                        cliente.Id = dr.GetInteger("CLIEID");
+                        cliente.Nome = dr.GetString("CLIENOME");
+                        cliente.CPFCNPJ = new CPFCNPJ(dr.GetString("CLIECPFCNPJ"));
+                        clientes.Add(cliente);
+                    }
+                }
+            }
+            return clientes;
+        }
+
+
     }
 }
