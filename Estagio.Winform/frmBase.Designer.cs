@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ssBarraDeStatus = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sslMensagem = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ssBarraDeStatus.SuspendLayout();
@@ -39,18 +39,18 @@
             // ssBarraDeStatus
             // 
             this.ssBarraDeStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.sslMensagem});
             this.ssBarraDeStatus.Location = new System.Drawing.Point(0, 428);
             this.ssBarraDeStatus.Name = "ssBarraDeStatus";
             this.ssBarraDeStatus.Size = new System.Drawing.Size(640, 22);
             this.ssBarraDeStatus.TabIndex = 1;
             this.ssBarraDeStatus.Text = "ssIMensagem";
             // 
-            // toolStripStatusLabel1
+            // sslMensagem
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(79, 17);
-            this.toolStripStatusLabel1.Text = "ssIMensagem";
+            this.sslMensagem.Name = "sslMensagem";
+            this.sslMensagem.Size = new System.Drawing.Size(79, 17);
+            this.sslMensagem.Text = "ssIMensagem";
             // 
             // panel1
             // 
@@ -96,7 +96,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.StatusStrip ssBarraDeStatus;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel sslMensagem;
         protected System.Windows.Forms.Panel panel1;
     }
 }

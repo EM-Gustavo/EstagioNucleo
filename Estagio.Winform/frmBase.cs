@@ -15,6 +15,7 @@ namespace Estagio.WinForm
         public frmBase()
         {
             InitializeComponent();
+            sslMensagem.Text = string.Empty;
         }
 
         protected bool FoiInformadoOCampo(TextBox textBox, string mensagemDeInconsistencia)
@@ -31,22 +32,19 @@ namespace Estagio.WinForm
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            ExibaStatusCarregando();
-            System.Threading.Thread.Sleep(500);
-            ExibaStatusPronto();
         }
 
         protected void ExibaStatusCarregando()
         {
             Cursor.Current = Cursors.WaitCursor;
-            ssBarraDeStatus.Text = "Aguarde Carregando...";
+            sslMensagem.Text = "Aguarde Carregando...";
             Update();
         }
 
         protected void ExibaStatusPronto()
         {
             Cursor.Current = Cursors.Default;
-            ssBarraDeStatus.Text = "Pronto";
+            sslMensagem.Text = "Pronto";
             Update();
         }
     }

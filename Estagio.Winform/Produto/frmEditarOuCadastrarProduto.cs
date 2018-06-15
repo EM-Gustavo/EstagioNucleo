@@ -41,7 +41,6 @@ namespace Estagio.WinForm
 
             if (EhNovoProduto())
             {
-                Produto.Id = RepositorioDeProduto.Instancia.Produtos.Count() + 1;
                 RepositorioDeProduto.Instancia.Add(Produto);
             }
             else

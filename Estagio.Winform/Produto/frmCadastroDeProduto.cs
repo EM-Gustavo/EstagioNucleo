@@ -37,8 +37,8 @@ namespace Estagio.WinForm
 
         protected override void MonteColunas(DataGridView dgvGeral)
         {
-            dgvGeral.CrieColuna("Id", "Id", Width = 90);
-            dgvGeral.CrieColuna("Descrição", "Descricao", DataGridViewAutoSizeColumnMode.Fill);
+            dgvGeral.CrieColuna("Id", nameof(Produto.Id), 90);
+            dgvGeral.CrieColuna("Descrição", nameof(Produto.Descricao));
         }
 
 
@@ -74,9 +74,10 @@ namespace Estagio.WinForm
             bsGeral.DataSource = RepositorioDeProduto.Instancia.GetAll();
             bsGeral.ResetBindings(false);
         }
-        protected override void ExibaItemPesquisado()
+
+        protected override void ExibaItemPesquisado(string textoPesquisado)
         {
-            bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll().Where(p => p.Descricao.ToUpper().Contains(txtInfoParaPesquisa.Text.ToUpper())).ToList();
+            bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll().Where(p => p.Descricao.ToUpper().Contains(textoPesquisado)).ToList();
             bsProdutos.ResetBindings(false);
         }
 

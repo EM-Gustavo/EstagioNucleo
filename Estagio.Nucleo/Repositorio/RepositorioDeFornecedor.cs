@@ -15,34 +15,54 @@ namespace Estagio.Nucleo.Repositorio
 
         }
 
-        private List<Fornecedor> _fornecedores = new List<Fornecedor>();
-
-        public IEnumerable<Fornecedor> Fornecedor => _fornecedores.AsReadOnly();
-
         public void Add(Fornecedor item)
         {
-            _fornecedores.Add(item);
+            item.Id = DBHelper.Instancia.ObtenhaProximoId("FORNID", "TBFORNECEDORES");
+
+            var sql = "INSERT INTO TBFORNECEDORES (FORNID, FORNNOME, FORNCPFCNPJ) VALUES (@FORNID, @FORNNOME, @FORNCPFCNPJ)";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNNOME", item.Nome));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNCPFCNPJ", item.CPFCNPJ.Numero));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public void Delete(Fornecedor item)
         {
-            _fornecedores.Remove(item);
+
         }
 
         public IEnumerable<Fornecedor> GetAll()
         {
-            return _fornecedores;
+            var fornecedores = new List<Fornecedor>();
+
+            var sql = "SELECT FORNID, FORNNOME, FORNCPFCNPJ FROM TBFORNECEDORES";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                using (DBDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var fornecedor = new Fornecedor();
+                        fornecedor.Id = dr.GetInteger("FORNID");
+                        fornecedor.Nome = dr.GetString("FORNNOME");
+                        fornecedor.CPFCNPJ = new CPFCNPJ(dr.GetString("FORNCPFCNPJ"));
+                        fornecedores.Add(fornecedor);
+                    }
+                }
+            }
+            return fornecedores;
         }
 
         public Fornecedor GetById(int Id)
         {
-            return _fornecedores.Find(x => x.Id == Id);
+            return null;
         }
 
         public void UpDate(Fornecedor item)
         {
-            _fornecedores.Remove(GetById(item.Id));
-            _fornecedores.Add(item);
         }
     }
 }

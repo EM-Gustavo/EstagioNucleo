@@ -9,22 +9,24 @@ namespace Estagio.WinForm
 {
     public static class MetodosDeExtenssaoCrieColunas
     {
-        public static void CrieColuna(this DataGridView dgvGeral, string HeaderText, string DataPropertyName, int tamanhoDaColuna)
+        public static DataGridViewColumn CrieColuna(this DataGridView dgvGeral, string headerText, string dataPropertyName, int tamanhoDaColuna)
         {
             var coluna = new DataGridViewTextBoxColumn();
-            coluna.HeaderText = HeaderText;
-            coluna.DataPropertyName = DataPropertyName;
+            coluna.HeaderText = headerText;
+            coluna.DataPropertyName = dataPropertyName;
             coluna.Width = tamanhoDaColuna;
             dgvGeral.Columns.Add(coluna);
+            return coluna;
         }
 
-        public static void CrieColuna(this DataGridView dgvGeral, string HeaderText, string DataPropertyName, DataGridViewAutoSizeColumnMode ModoDaColuna)
+        public static DataGridViewColumn CrieColuna(this DataGridView dgvGeral, string headerText, string dataPropertyName)
         {
             var coluna = new DataGridViewTextBoxColumn();
-            coluna.HeaderText = HeaderText;
-            coluna.DataPropertyName = DataPropertyName;
+            coluna.HeaderText = headerText;
+            coluna.DataPropertyName = dataPropertyName;
             coluna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvGeral.Columns.Add(coluna);
+            return coluna;
         }
     }
 

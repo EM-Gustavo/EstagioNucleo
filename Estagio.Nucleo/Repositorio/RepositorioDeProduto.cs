@@ -15,36 +15,44 @@ namespace Estagio.Nucleo.Repositorio
 
         }
 
-        private List<Produto> _produtos = new List<Produto>();
-
-        public IEnumerable<Produto> Produtos => _produtos.AsReadOnly();
-
-
-
         public void Add(Produto item)
         {
-            _produtos.Add(item);
+            item.Id = DBHelper.Instancia.ObtenhaProximoId("PRODID", "TBPRODUTOS");
+
+            var sql = @"INSERT INTO TBPRODUTOS (PRODID, PRODDESCRICAO, PRODPRCUNITARIO, PRODQTDMINIMA)
+ VALUES(@PRODID,@PRODDESCRICAO,@PRODPRCUNITARIO,@PRODQTDMINIMA)";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@PRODID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@PRODDESCRICAO", item.Descricao));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@PRODPRCUNITARIO", item.PrecoUnitario));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@PRODQTDMINIMA", item.QuantidadeMinimaEstoque));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public void Delete(Produto item)
         {
-            _produtos.Remove(item);
+            var sql = "DELETE FROM TBPRODUTOS WHERE PRODID = @PRODID";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@PRODID", item.Id));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public Produto GetById(int Id)
         {
-            return _produtos.Find(x => x.Id == Id);
+            return null;
         }
 
         public void UpDate(Produto item)
         {
-            _produtos.Remove(GetById(item.Id));
-            _produtos.Add(item);
         }
 
         public IEnumerable<Produto> GetAll()
         {
-            return _produtos.Select(c => (Produto)c.Clone());
+            return null;
         }
 
 

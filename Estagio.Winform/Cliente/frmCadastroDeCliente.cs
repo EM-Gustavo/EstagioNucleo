@@ -33,7 +33,7 @@ namespace Estagio.WinForm
         protected override void MonteColunas(DataGridView dgvGeral)
         {
             MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Id", "Id", 90);
-            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
+            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Nome", "Nome");
         }
 
         protected override void RemovaItemDaLista(object itemSelecioando)
@@ -68,6 +68,12 @@ namespace Estagio.WinForm
         {
             bsGeral.DataSource = RepositorioDeCliente.Instancia.GetAll();
             bsGeral.ResetBindings(false);
+        }
+
+        protected override void ExibaItemPesquisado(string textoPesquisado)
+        {
+            bsProdutos.DataSource = RepositorioDeCliente.Instancia.GetAll().Where(p => p.Nome.ToUpper().Contains(textoPesquisado)).ToList();
+            bsProdutos.ResetBindings(false);
         }
 
         protected override string ObtenhaMensagemDeExlusao()

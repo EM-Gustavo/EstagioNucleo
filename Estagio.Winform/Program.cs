@@ -16,7 +16,7 @@ namespace Estagio.WinForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCadastroDeProduto());
+            Application.Run(new frmPrincipal());
         }
     }
 }

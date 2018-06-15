@@ -13,27 +13,16 @@ using Estagio.Nucleo.Repositorio;
 namespace Estagio.WinForm
 {
     public partial class frmCadastroDeFornecedor : frmBaseAterrisagem
-    { 
+    {
         public frmCadastroDeFornecedor()
         {
             InitializeComponent();
         }
 
-        private void frmCadastroDeProduto_Load(object sender, EventArgs e)
-        {
-            var fornecedor1 = new Fornecedor();
-            fornecedor1.Id = 1;
-            fornecedor1.Nome = "Carlos";
-            var CNPJ = new CPFCNPJ("38.117.767/0001-78");
-            fornecedor1.CPFCNPJ = CNPJ;
-
-            RepositorioDeFornecedor.Instancia.Add(fornecedor1);
-        }
-
         protected override void MonteColunas(DataGridView dgvGeral)
         {
-            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Id", "Id", 90);
-            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
+            dgvGeral.CrieColuna("Id", "Id", 90);
+            dgvGeral.CrieColuna("Nome", "Nome");
         }
 
         protected override void RemovaItemDaLista(object itemSelecioando)
@@ -68,6 +57,12 @@ namespace Estagio.WinForm
         {
             bsGeral.DataSource = RepositorioDeFornecedor.Instancia.GetAll();
             bsGeral.ResetBindings(false);
+        }
+
+        protected override void ExibaItemPesquisado(string textoPesquisado)
+        {
+            bsProdutos.DataSource = RepositorioDeFornecedor.Instancia.GetAll().Where(p => p.Nome.ToUpper().Contains(textoPesquisado)).ToList();
+            bsProdutos.ResetBindings(false);
         }
 
         protected override string ObtenhaMensagemDeExlusao()

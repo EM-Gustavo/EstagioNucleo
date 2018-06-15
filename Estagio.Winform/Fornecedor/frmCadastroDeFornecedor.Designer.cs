@@ -84,7 +84,6 @@
             this.ClientSize = new System.Drawing.Size(643, 450);
             this.Name = "frmCadastroDeProduto";
             this.Text = "frmCadastroDeProduto";
-            this.Load += new System.EventHandler(this.frmCadastroDeProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
