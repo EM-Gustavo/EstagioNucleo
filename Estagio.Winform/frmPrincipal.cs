@@ -38,5 +38,11 @@ namespace Estagio.WinForm
         {
             AbraFormulario(new frmCadastroDeProduto());
         }
+
+        private void entradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbraFormulario(new frmTeste());
+        }
+
     }
 }

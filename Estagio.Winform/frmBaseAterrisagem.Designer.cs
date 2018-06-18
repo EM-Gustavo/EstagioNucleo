@@ -58,6 +58,7 @@
             this.dgvGeral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGeral.Location = new System.Drawing.Point(0, 26);
             this.dgvGeral.Name = "dgvGeral";
+            this.dgvGeral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGeral.Size = new System.Drawing.Size(585, 355);
             this.dgvGeral.TabIndex = 3;
             // 
