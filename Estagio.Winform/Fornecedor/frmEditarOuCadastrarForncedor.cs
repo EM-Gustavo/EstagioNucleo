@@ -20,6 +20,7 @@ namespace Estagio.WinForm
         {
             InitializeComponent();
             txtNome.FormatoTexto();
+            txtCPFCNPJ.FormatoCPFCNPJ();
         }
 
         protected override void OnShown(EventArgs e)
@@ -62,9 +63,24 @@ namespace Estagio.WinForm
 
         protected override bool PodeConfirmar()
         {
+            if (!EhCPFCNPJValido()) return false;
             if (!FoiInformadoOCampo(txtNome, "Informe nome")) return false;
             if (!FoiInformadoOCampo(txtCPFCNPJ, "Informe CNPJ")) return false;
             return true;
+        }
+
+        private bool EhCPFCNPJValido()
+        {
+            try{
+                var CNPJ = new CPFCNPJ(txtCPFCNPJ.Text);
+                return true;
+            }
+            catch(ApplicationException)
+            {
+                MessageBox.Show("CPF ou CNPJ inválido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            txtCPFCNPJ.Focus();
+            return false;
         }
     }
 }

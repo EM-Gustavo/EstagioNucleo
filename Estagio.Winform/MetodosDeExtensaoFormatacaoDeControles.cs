@@ -30,6 +30,27 @@ namespace Estagio.WinForm
             textbox.KeyPress += FormatoInteiro_KeyPress;
         }
 
+        public static void FormatoCPFCNPJ(this TextBox textbox)
+        {
+            textbox.Leave += FormatoCPFCNPJ_Leave;
+        }
+
+        private static void FormatoCPFCNPJ_Leave(object sender, EventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            if (String.IsNullOrEmpty(textbox.Text)) return;
+
+            if(textbox.Text.Length == 11)
+            {
+                textbox.Text = Convert.ToDecimal(textbox.Text).ToString(@"000\.000\.000\-00");
+            }
+            else if(textbox.Text.Length == 14)
+            {
+                textbox.Text = Convert.ToDecimal(textbox.Text).ToString(@"00\.000\.000\/0000\-00");
+            }
+            return;
+        }
+
         private const int teclaBackSpace = 8;
         private const int teclaVirgula = 44;
 
