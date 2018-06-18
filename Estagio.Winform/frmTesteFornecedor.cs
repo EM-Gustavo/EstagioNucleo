@@ -34,11 +34,6 @@ namespace Estagio.WinForm
             AtualizeDataGrid();
         }
 
-        private void txtFornecedorCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void AtualizeDataGrid()
         {
             bsFornecedor.DataSource = RepositorioDeFornecedor.Instancia.GetAll();
