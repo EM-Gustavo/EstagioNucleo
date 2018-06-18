@@ -61,8 +61,8 @@ namespace Estagio.WinForm
 
         protected override void ExibaItemPesquisado(string textoPesquisado)
         {
-            bsProdutos.DataSource = RepositorioDeFornecedor.Instancia.GetAll().Where(p => p.Nome.ToUpper().Contains(textoPesquisado)).ToList();
-            bsProdutos.ResetBindings(false);
+            bsGeral.DataSource = RepositorioDeFornecedor.Instancia.GetAll().Where(p => p.Nome.ToUpper().Contains(textoPesquisado)).ToList();
+            bsGeral.ResetBindings(false);
         }
 
         protected override string ObtenhaMensagemDeExlusao()

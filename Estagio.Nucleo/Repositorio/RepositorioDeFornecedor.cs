@@ -42,9 +42,11 @@ namespace Estagio.Nucleo.Repositorio
         public Fornecedor GetById(int Id)
         {
             var fornecedor = new Fornecedor();
-            var sql = "SELECT FROM TBPRODUTOS WHERE FORNID = Id";
+
+            var sql = "SELECT FORNID, FORNNOME, FORNCPFCNPJ FROM TBFORNECEDORES WHERE FORNID = @FORNID";
             using (var cmd = DBHelper.Instancia.CrieComando(sql))
             {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNID", Id));
                 using (DBDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())

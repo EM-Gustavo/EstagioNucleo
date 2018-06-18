@@ -69,6 +69,7 @@
             this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
             this.txtInfoParaPesquisa.Size = new System.Drawing.Size(585, 26);
             this.txtInfoParaPesquisa.TabIndex = 5;
+            this.txtInfoParaPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInfoParaPesquisa_KeyDown);
             // 
             // btnNovo
             // 

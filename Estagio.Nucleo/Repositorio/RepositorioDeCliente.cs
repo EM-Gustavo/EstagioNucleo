@@ -44,12 +44,14 @@ namespace Estagio.Nucleo.Repositorio
         public Cliente GetById(int Id)
         {
             var cliente = new Cliente();
-            var sql = "SELECT FROM TBPRODUTOS WHERE CLIEID = Id";
+
+            var sql = "SELECT CLIEID, CLIENOME, CLIECPFCNPJ FROM TBCLIENTES WHERE CLIEID = @CLIEID";
             using (var cmd = DBHelper.Instancia.CrieComando(sql))
             {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIEID", Id));
                 using (DBDataReader dr = cmd.ExecuteReader())
                 {
-                    while (dr.Read())
+                    if (dr.Read())
                     {
                         cliente.Id = dr.GetInteger("CLIEID");
                         cliente.Nome = dr.GetString("CLIENOME");
@@ -76,7 +78,7 @@ namespace Estagio.Nucleo.Repositorio
         {
             var clientes = new List<Cliente>();
 
-            var sql = "SELECT a.CLIEID, a.CLIENOME, a.CLIECPFCNPJ FROM TBCLIENTES a";
+            var sql = "SELECT CLIEID, CLIENOME, CLIECPFCNPJ FROM TBCLIENTES";
             using (var cmd = DBHelper.Instancia.CrieComando(sql))
             {
                 using (DBDataReader dr = cmd.ExecuteReader())
