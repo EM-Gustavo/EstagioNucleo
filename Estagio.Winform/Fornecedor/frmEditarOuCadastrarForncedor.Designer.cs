@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.lbCNPJ = new System.Windows.Forms.Label();
-            this.txtCNPJ = new System.Windows.Forms.TextBox();
+            this.lbCPFCNPJ = new System.Windows.Forms.Label();
+            this.txtCPFCNPJ = new System.Windows.Forms.TextBox();
             this.lbNome = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -39,11 +39,11 @@
             // 
             this.panel1.Controls.Add(this.lbNome);
             this.panel1.Controls.Add(this.txtNome);
-            this.panel1.Controls.Add(this.txtCNPJ);
-            this.panel1.Controls.Add(this.lbCNPJ);
+            this.panel1.Controls.Add(this.txtCPFCNPJ);
+            this.panel1.Controls.Add(this.lbCPFCNPJ);
             this.panel1.Size = new System.Drawing.Size(510, 213);
-            this.panel1.Controls.SetChildIndex(this.lbCNPJ, 0);
-            this.panel1.Controls.SetChildIndex(this.txtCNPJ, 0);
+            this.panel1.Controls.SetChildIndex(this.lbCPFCNPJ, 0);
+            this.panel1.Controls.SetChildIndex(this.txtCPFCNPJ, 0);
             this.panel1.Controls.SetChildIndex(this.txtNome, 0);
             this.panel1.Controls.SetChildIndex(this.lbNome, 0);
             // 
@@ -54,23 +54,23 @@
             this.txtNome.Size = new System.Drawing.Size(130, 20);
             this.txtNome.TabIndex = 29;
             // 
-            // lbCNPJ
+            // lbCPFCNPJ
             // 
-            this.lbCNPJ.AutoSize = true;
-            this.lbCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCNPJ.Location = new System.Drawing.Point(36, 71);
-            this.lbCNPJ.Name = "lbCNPJ";
-            this.lbCNPJ.Size = new System.Drawing.Size(53, 20);
-            this.lbCNPJ.TabIndex = 33;
-            this.lbCNPJ.Text = "CNPJ:";
+            this.lbCPFCNPJ.AutoSize = true;
+            this.lbCPFCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCPFCNPJ.Location = new System.Drawing.Point(36, 71);
+            this.lbCPFCNPJ.Name = "lbCPFCNPJ";
+            this.lbCPFCNPJ.Size = new System.Drawing.Size(88, 20);
+            this.lbCPFCNPJ.TabIndex = 33;
+            this.lbCPFCNPJ.Text = "CPF/CNPJ:";
             // 
             // txtCNPJ
             // 
-            this.txtCNPJ.Location = new System.Drawing.Point(148, 73);
-            this.txtCNPJ.Name = "txtCNPJ";
-            this.txtCNPJ.Size = new System.Drawing.Size(128, 20);
-            this.txtCNPJ.TabIndex = 30;
-            this.txtCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCPFCNPJ.Location = new System.Drawing.Point(148, 73);
+            this.txtCPFCNPJ.Name = "txtCNPJ";
+            this.txtCPFCNPJ.Size = new System.Drawing.Size(128, 20);
+            this.txtCPFCNPJ.TabIndex = 30;
+            this.txtCPFCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbNome
             // 
@@ -99,8 +99,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label lbCNPJ;
-        private System.Windows.Forms.TextBox txtCNPJ;
+        private System.Windows.Forms.Label lbCPFCNPJ;
+        private System.Windows.Forms.TextBox txtCPFCNPJ;
         private System.Windows.Forms.Label lbNome;
     }
 }

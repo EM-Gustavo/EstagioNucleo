@@ -28,7 +28,7 @@ namespace Estagio.WinForm
             if (Cliente != null)
             {
                 txtNome.Text = Cliente.Nome;
-                txtCPF.Text = Cliente.CPFCNPJ.ToString();
+                txtCPFCNPJ.Text = Cliente.CPFCNPJ.ToString();
             }
         }
 
@@ -56,14 +56,14 @@ namespace Estagio.WinForm
         {
             Cliente = Cliente ?? new Cliente();
             Cliente.Nome = txtNome.Text;
-            var CPF = new CPFCNPJ(txtCPF.Text);
+            var CPF = new CPFCNPJ(txtCPFCNPJ.Text);
             Cliente.CPFCNPJ = CPF;
         }
 
         protected override bool PodeConfirmar()
         {
             if (!FoiInformadoOCampo(txtNome, "Informe nome")) return false;
-            if (!FoiInformadoOCampo(txtCPF, "Informe CNPJ")) return false;
+            if (!FoiInformadoOCampo(txtCPFCNPJ, "Informe CNPJ")) return false;
             return true;
         }
     }

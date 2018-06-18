@@ -43,12 +43,26 @@ namespace Estagio.Nucleo.Repositorio
 
         public Cliente GetById(int Id)
         {
-            return null;
+            var cliente = new Cliente();
+            var sql = "SELECT FROM TBPRODUTOS WHERE CLIEID = Id";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                using (DBDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        cliente.Id = dr.GetInteger("CLIEID");
+                        cliente.Nome = dr.GetString("CLIENOME");
+                        cliente.CPFCNPJ = new CPFCNPJ(dr.GetString("CLIECPFCNPJ"));
+                    }
+                }
+            }
+            return cliente;
         }
 
         public void UpDate(Cliente item)
         {
-            var sql = "UPDATE TBCLIENTES SET  CLIENOME = @CLIENOME, CLIECPFCNPJ = @CLIECPFCNPJ WHERE FORNID = @FORNID";
+            var sql = "UPDATE TBCLIENTES SET CLIENOME = @CLIENOME, CLIECPFCNPJ = @CLIECPFCNPJ WHERE CLIEID = @CLIEID";
             using (var cmd = DBHelper.Instancia.CrieComando(sql))
             {
                 cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@CLIEID", item.Id));
@@ -62,7 +76,7 @@ namespace Estagio.Nucleo.Repositorio
         {
             var clientes = new List<Cliente>();
 
-            var sql = "SELECT CLIEID, CLIENOME, CLIECPFCNPJ FROM TBCLIENTE";
+            var sql = "SELECT a.CLIEID, a.CLIENOME, a.CLIECPFCNPJ FROM TBCLIENTES a";
             using (var cmd = DBHelper.Instancia.CrieComando(sql))
             {
                 using (DBDataReader dr = cmd.ExecuteReader())
@@ -79,7 +93,5 @@ namespace Estagio.Nucleo.Repositorio
             }
             return clientes;
         }
-
-
     }
 }

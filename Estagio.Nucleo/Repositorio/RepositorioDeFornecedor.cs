@@ -41,20 +41,34 @@ namespace Estagio.Nucleo.Repositorio
 
         public Fornecedor GetById(int Id)
         {
-            return null;
+            var fornecedor = new Fornecedor();
+            var sql = "SELECT FROM TBPRODUTOS WHERE FORNID = Id";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                using (DBDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        fornecedor.Id = dr.GetInteger("FORNID");
+                        fornecedor.Nome = dr.GetString("FORNNOME");
+                        fornecedor.CPFCNPJ = new CPFCNPJ(dr.GetString("FORNCPFCNPJ"));
+                    }
+                }
+            }
+            return fornecedor;
         }
 
         public void UpDate(Fornecedor item)
         {
             var sql = "UPDATE TBFORNECEDORES SET FORNNOME = @FORNNOME, FORNCPFCNPJ = @FORNCPFCNPJ WHERE FORNID = @FORNID";
-            using (var cmd = DBHelper.Instancia.CrieComando(sql))
-            {
-                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNID", item.Id));
-                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNNOME", item.Nome));
-                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNCPFCNPJ", item.CPFCNPJ.Numero));
-                cmd.ExecuteNonQuery();
-            }
-        }
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNNOME", item.Nome));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@FORNCPFCNPJ", item.CPFCNPJ.Numero));
+                cmd.ExecuteNonQuery();
+            }
+        }
 
         public IEnumerable<Fornecedor> GetAll()
         {
@@ -77,9 +91,5 @@ namespace Estagio.Nucleo.Repositorio
             }
             return fornecedores;
         }
-
-
-    }
-    
-
+    }   
 }
