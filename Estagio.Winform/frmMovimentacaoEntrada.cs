@@ -14,6 +14,7 @@ namespace Estagio.WinForm
 {
     public partial class frmMovimentacaoEntrada : frmBase 
     {
+        public MovimentacaoDeEstoqueAbstrato MovimentacaoDeEstoqueAbstrato { get; set; }
         public frmMovimentacaoEntrada()
         {
             InitializeComponent();
@@ -42,8 +43,18 @@ namespace Estagio.WinForm
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            var FornecedorSelecionado = ucPesquisaFornecedor1.Fornecedor; 
+            InsereValores();
+
+        }
+
+        private void InsereValores()
+        {
+            var FornecedorSelecionado = ucPesquisaFornecedor1.Fornecedor;
             var ProdutoSelecionado = bsGeral.Current;
+            
+            MovimentacaoDeEstoqueAbstrato.ItemMovimentacao.Quantidade = Convert.ToInt32(txtQuantidade.Text);
+            MovimentacaoDeEstoqueAbstrato.ItemMovimentacao.ValorUnitario = Convert.ToDecimal(txtQuantidade.Text);
+            MovimentacaoDeEstoqueAbstrato.ItemMovimentacao.Produto.Id = ProdutoSelecionado.
         }
     }
 }

@@ -13,9 +13,6 @@ namespace Estagio.Nucleo
             }
         }
 
-        // somente ler esse lista
-        //public IEnumerable<ItemMovimentacao> Itens =>_itemMovimentacao.AsReadOnly();
-
 
     }
 }

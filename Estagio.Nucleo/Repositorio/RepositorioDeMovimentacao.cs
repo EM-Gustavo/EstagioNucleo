@@ -12,35 +12,44 @@ namespace Estagio.Nucleo.Repositorio
         
         private RepositorioDeMovimentacao()
         {
-
         }
-
-        private List<MovimentacaoDeEstoqueAbstrato> _movimentacaoDeEstoqueAbstratos = new List<MovimentacaoDeEstoqueAbstrato>();
 
         public void Add(MovimentacaoDeEstoqueAbstrato item)
         {
-            _movimentacaoDeEstoqueAbstratos.Add(item);
+            item.Id = DBHelper.Instancia.ObtenhaProximoId("KEYMVEID", "TBMOVENTRADA");
+
+            var sql = @"INSERT INTO TBMOVENTRADA (KEYMVEID, MVEQUANTIDADE, MVEVALOR, MVETOTAL, MVEDATA, MVEPRODID, MVEFORNID) VALUES ( @KEYMVEID, @MVEQUANTIDADE, @MVEVALOR, @MVETOTAL, @MVEDATA,  @MVEPRODID, @MVEFORNID)";
+            using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            {
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@KEYMVEID", item.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@MVEQUANTIDADE", item.ItemMovimentacao.Quantidade));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@MVEVALOR", item.ItemMovimentacao.ValorUnitario));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@MVETOTAL", item.ItemMovimentacao.ValorMovimentacao));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@MVEDATA", item.Data));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@MVEPRODID", item.ItemMovimentacao.Produto.Id));
+                cmd.Parameters.Add(DBHelper.Instancia.CrieParametro("@MVEFORNID", 2));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public void Delete(MovimentacaoDeEstoqueAbstrato item)
         {
-            _movimentacaoDeEstoqueAbstratos.Remove(item);
+            
         }
 
         public IEnumerable<MovimentacaoDeEstoqueAbstrato> GetAll()
         {
-            return _movimentacaoDeEstoqueAbstratos;
+            return null;
         }
 
         public MovimentacaoDeEstoqueAbstrato GetById(int id)
         {
-            return _movimentacaoDeEstoqueAbstratos.Find(x => x.Id == id);
+            return null;
         }
 
         public void UpDate(MovimentacaoDeEstoqueAbstrato item)
         {
-            _movimentacaoDeEstoqueAbstratos.Remove(GetById(item.Id));
-            _movimentacaoDeEstoqueAbstratos.Add(item);
+
         }
     }
 }

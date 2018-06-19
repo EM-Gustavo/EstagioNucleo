@@ -10,6 +10,7 @@ namespace Estagio.Nucleo
     {
         public int Id { get; set; }
         public DateTime Data { get; set; }
+        public ItemMovimentacao ItemMovimentacao { get; private set; }
         public List<ItemMovimentacao> Itens { get; set; }
         public decimal ValorTotal
         {
