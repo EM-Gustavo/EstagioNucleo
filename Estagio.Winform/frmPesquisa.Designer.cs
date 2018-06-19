@@ -1,6 +1,6 @@
 ﻿namespace Estagio.WinForm
 {
-    partial class frmTesteFornecedor
+    partial class frmPesquisa
     {
         /// <summary>
         /// Required designer variable.
@@ -33,18 +33,18 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dgvGeral = new System.Windows.Forms.DataGridView();
-            this.txtInfoParaPesquisa = new System.Windows.Forms.TextBox();
-            this.bsFornecedor = new System.Windows.Forms.BindingSource(this.components);
+            this.bsGeral = new System.Windows.Forms.BindingSource(this.components);
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGeral)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFornecedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGeral)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvGeral);
-            this.panel1.Controls.Add(this.txtInfoParaPesquisa);
+            this.panel1.Controls.Add(this.txtPesquisa);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Size = new System.Drawing.Size(660, 329);
             // 
@@ -57,6 +57,7 @@
             this.btnConfirmar.TabIndex = 20;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnCancelar
             // 
@@ -67,6 +68,7 @@
             this.btnCancelar.TabIndex = 21;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -82,35 +84,35 @@
             // 
             this.dgvGeral.AutoGenerateColumns = false;
             this.dgvGeral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGeral.DataSource = this.bsFornecedor;
+            this.dgvGeral.DataSource = this.bsGeral;
             this.dgvGeral.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvGeral.Location = new System.Drawing.Point(0, 26);
+            this.dgvGeral.Location = new System.Drawing.Point(0, 20);
             this.dgvGeral.Name = "dgvGeral";
             this.dgvGeral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGeral.Size = new System.Drawing.Size(526, 301);
+            this.dgvGeral.Size = new System.Drawing.Size(526, 307);
             this.dgvGeral.TabIndex = 24;
             // 
-            // txtInfoParaPesquisa
+            // txtPesquisa
             // 
-            this.txtInfoParaPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtInfoParaPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInfoParaPesquisa.Location = new System.Drawing.Point(0, 0);
-            this.txtInfoParaPesquisa.Name = "txtInfoParaPesquisa";
-            this.txtInfoParaPesquisa.Size = new System.Drawing.Size(526, 26);
-            this.txtInfoParaPesquisa.TabIndex = 25;
+            this.txtPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPesquisa.Location = new System.Drawing.Point(0, 0);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(526, 20);
+            this.txtPesquisa.TabIndex = 25;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
-            // testeFornecedor
+            // frmPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 450);
-            this.Name = "testeFornecedor";
+            this.Name = "frmPesquisa";
             this.Text = "testeFornecedor";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGeral)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFornecedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGeral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,7 +124,7 @@
         public System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dgvGeral;
-        protected System.Windows.Forms.TextBox txtInfoParaPesquisa;
-        private System.Windows.Forms.BindingSource bsFornecedor;
+        protected System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.BindingSource bsGeral;
     }
 }

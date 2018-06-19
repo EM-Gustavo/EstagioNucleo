@@ -41,8 +41,12 @@ namespace Estagio.WinForm
 
         private void entradaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbraFormulario(new frmTeste());
+            AbraFormulario(new frmMovimentacaoEntrada());
         }
 
+        private void saídaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbraFormulario(new frmMovimentacaoSaida());
+        }
     }
 }

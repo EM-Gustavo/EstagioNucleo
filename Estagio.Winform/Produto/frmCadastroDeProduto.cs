@@ -23,7 +23,7 @@ namespace Estagio.WinForm
         protected override void MonteColunas(DataGridView dgvGeral)
         {
             dgvGeral.CrieColuna("Id", nameof(Produto.Id), 90);
-            dgvGeral.CrieColuna("Descrição", nameof(Produto.Descricao));
+            dgvGeral.CrieColunaFill("Descrição", nameof(Produto.Descricao));
         }
 
 

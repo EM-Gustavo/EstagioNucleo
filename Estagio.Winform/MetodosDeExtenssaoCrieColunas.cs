@@ -19,7 +19,7 @@ namespace Estagio.WinForm
             return coluna;
         }
 
-        public static DataGridViewColumn CrieColuna(this DataGridView dgvGeral, string headerText, string dataPropertyName)
+        public static DataGridViewColumn CrieColunaFill(this DataGridView dgvGeral, string headerText, string dataPropertyName)
         {
             var coluna = new DataGridViewTextBoxColumn();
             coluna.HeaderText = headerText;

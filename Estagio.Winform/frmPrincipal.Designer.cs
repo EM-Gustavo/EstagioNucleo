@@ -102,6 +102,7 @@
             this.saídaToolStripMenuItem.Name = "saídaToolStripMenuItem";
             this.saídaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saídaToolStripMenuItem.Text = "Saída";
+            this.saídaToolStripMenuItem.Click += new System.EventHandler(this.saídaToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -112,7 +113,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmPrincipal";
-            this.Text = "frmPrincipal";
+            this.Text = "Formulário de Movimentação";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
