@@ -71,7 +71,6 @@ namespace Estagio.Nucleo.Repositorio
 
         public void Delete(MovimentacaoDeEstoqueAbstrato item)
         {
-            
         }
 
         public IEnumerable<MovimentacaoDeEstoqueAbstrato> GetAll()
