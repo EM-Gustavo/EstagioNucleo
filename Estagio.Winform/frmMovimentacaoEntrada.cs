@@ -14,7 +14,13 @@ namespace Estagio.WinForm
 {
     public partial class frmMovimentacaoEntrada : frmBase 
     {
+        public List<ItemMovimentacao> Itens { get; set; }
+
         public MovimentacaoDeEstoqueAbstrato MovimentacaoDeEstoqueAbstrato { get; set; }
+        public MovimentacaoDeEntrada MovimentacaoDeEntrada { get; set; }
+        public ItemMovimentacao ItemMovimentacao { get; set; }
+        public Produto Produto { get; set; }
+
         public frmMovimentacaoEntrada()
         {
             InitializeComponent();
@@ -49,12 +55,25 @@ namespace Estagio.WinForm
 
         private void InsereValores()
         {
-            var FornecedorSelecionado = ucPesquisaFornecedor1.Fornecedor;
-            var ProdutoSelecionado = bsGeral.Current;
+            MovimentacaoDeEntrada = new MovimentacaoDeEntrada();
+            MovimentacaoDeEntrada.Data = Convert.ToDateTime(dtpEntrada.Text);
+            MovimentacaoDeEntrada.Fornecedor = ucPesquisaFornecedor1.Fornecedor;
+
+            ItemMovimentacao = new ItemMovimentacao();
+            ItemMovimentacao.Quantidade = Convert.ToInt32(txtQuantidade.Text);
+            ItemMovimentacao.ValorUnitario = Convert.ToDecimal(txtValor.Text);
+            ItemMovimentacao.Produto = (Produto)bsGeral.Current;
             
-            MovimentacaoDeEstoqueAbstrato.ItemMovimentacao.Quantidade = Convert.ToInt32(txtQuantidade.Text);
-            MovimentacaoDeEstoqueAbstrato.ItemMovimentacao.ValorUnitario = Convert.ToDecimal(txtQuantidade.Text);
-            MovimentacaoDeEstoqueAbstrato.ItemMovimentacao.Produto.Id = ProdutoSelecionado.
+            MovimentacaoDeEntrada.Itens.Add(ItemMovimentacao);
+            //movimentacaoE.vinculeFornecedor(movimentacaoE);
+
+
+
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            //Itens.Add(i => i.Produto)
         }
     }
 }

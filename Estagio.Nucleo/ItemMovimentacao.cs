@@ -6,11 +6,16 @@ namespace Estagio.Nucleo
     {
         public decimal ValorUnitario { get; set; }
         public int Quantidade { get; set; }
-        public Produto Produto { get; private set; }
+        public Produto Produto { get; set; }
         public decimal ValorMovimentacao { get
             {
                 return Quantidade * ValorUnitario;
             }
+        }
+
+        public void RecebeProduto(Produto produto)
+        {
+            Produto = produto;
         }
 
 
