@@ -13,7 +13,7 @@ namespace Estagio.Nucleo
             }
         }
 
-        public void RecebeProduto(Produto produto)
+        public void ObtenhaProduto(Produto produto)
         {
             Produto = produto;
         }

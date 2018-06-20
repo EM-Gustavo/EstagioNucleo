@@ -10,7 +10,6 @@ namespace Estagio.Nucleo
     {
         public Fornecedor Fornecedor { get; set; }
 
-
     }
 }
   
