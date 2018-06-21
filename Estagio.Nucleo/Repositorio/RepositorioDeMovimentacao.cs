@@ -75,6 +75,25 @@ namespace Estagio.Nucleo.Repositorio
 
         public IEnumerable<MovimentacaoDeEstoqueAbstrato> GetAll()
         {
+            //var movimentacoesDeEntradas = new List<MovimentacaoDeEntrada>();
+
+            //var sql = "SELECT MVEITID, MVEITPRDOID, MVEITQUANT, MVEITVALOR, MVEITTOTAL FROM TBMOVENTRADAITENS";
+            //using (var cmd = DBHelper.Instancia.CrieComando(sql))
+            //{
+            //    using (DBDataReader dr = cmd.ExecuteReader())
+            //    {
+            //        while (dr.Read())
+            //        {
+            //            var movimentacaoDeEntrada = new MovimentacaoDeEntrada();
+            //            movimentacaoDeEntrada.Id = dr.GetInteger("PRODID");
+            //            movimentacaoDeEntrada = dr.GetString("PRODDESCRICAO");
+            //            movimentacaoDeEntrada.PrecoUnitario = dr.GetDecimal("PRODPRCUNITARIO");
+            //            movimentacaoDeEntrada.QuantidadeMinimaEstoque = dr.GetInteger("PRODQTDMINIMA");
+            //            movimentacoesDeEntradas.Add(movimentacaoDeEntrada);
+            //        }
+            //    }
+            //}
+            //return movimentacoesDeEntradas;
             return null;
         }
 
@@ -87,5 +106,7 @@ namespace Estagio.Nucleo.Repositorio
         {
 
         }
+
+
     }
 }

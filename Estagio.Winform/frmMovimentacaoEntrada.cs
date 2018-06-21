@@ -15,10 +15,21 @@ namespace Estagio.WinForm
     public partial class frmMovimentacaoEntrada : frmBase 
     {
         public MovimentacaoDeEntrada MovimentacaoDeEntrada { get; set; }
+        public Produto ProdutoSelecionado { get; set; }
 
         public frmMovimentacaoEntrada()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            if (DesignMode) return;
+
+            dgvProdutos.AutoGenerateColumns = false;
+            dgvProdutos.AllowUserToAddRows = false;
+            dgvProdutos.AllowUserToDeleteRows = false;
+            dgvProdutos.AllowUserToResizeColumns = false;
+            dgvProdutos.AllowUserToResizeRows = false;
+            dgvProdutos.ReadOnly = true;
+
             MonteColunas();
             MovimentacaoDeEntrada = new MovimentacaoDeEntrada();
             MovimentacaoDeEntrada.Itens = new List<ItemMovimentacao>();
@@ -27,22 +38,64 @@ namespace Estagio.WinForm
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            AtualizeDataGrid();           
+            AtualizeDataGrid();
+            AtuazaDataGridItens();
         }
 
         private void MonteColunas()
         {
-            dgvGeral.CrieColunaFill("Descrição", nameof(Produto.Descricao));
-            dgvGeral.CrieColuna("Preço Unit.", nameof(Produto.PrecoUnitario), 100);
-            dgvGeral.CrieColuna("Qtd. Mínima de Estoque", nameof(Produto.QuantidadeMinimaEstoque), 160);
+            dgvProdutos.CrieColunaFill("Produtos", nameof(Produto.Descricao));
+            dgvProdutos.CrieColuna("Vlr. Unitário", nameof(Produto.PrecoUnitario), 80);
 
+            dgvItensSelecionados.CrieColunaFill("Produto", nameof(ItemMovimentacao.Produto));
+            dgvItensSelecionados.CrieColuna("Vlr. Unitário", nameof(ItemMovimentacao.ValorUnitario), 80);
+            dgvItensSelecionados.CrieColuna("Quantidade", nameof(ItemMovimentacao.Quantidade), 80);
+            dgvItensSelecionados.CrieColuna("Subtotal", nameof(ItemMovimentacao.ValorMovimentacao), 80);
+        }
+
+        private void dgvProdutos_DoubleClick(object sender, EventArgs e)
+        {
+            ProdutoSelecionado = new Produto();
+            ProdutoSelecionado = (Produto)bsProdutos.Current;
+
+            if (!EhProduto())
+            {
+                IsereItens();
+                AtuazaDataGridItens();
+            }
+        }
+
+        private bool EhProduto()
+        {
+            foreach (var item in MovimentacaoDeEntrada.Itens)
+            {
+                if (item.Produto.Id == ProdutoSelecionado.Id)
+                {
+                    item.Quantidade++;
+                    Refresh();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void IsereItens()
+        {
+            MovimentacaoDeEntrada.Itens.Add(AdicioneUmNovoItemDeMovimentacao());
         }
 
         private void AtualizeDataGrid()
         {
-            bsGeral.DataSource = RepositorioDeProduto.Instancia.GetAll();
-            bsGeral.ResetBindings(false);
+            bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll();
+            bsProdutos.ResetBindings(false);
         }
+
+        private void AtuazaDataGridItens()
+        {
+            bsProdutosSelecionados.DataSource = MovimentacaoDeEntrada.Itens;
+            bsProdutosSelecionados.ResetBindings(false);
+        }
+
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
@@ -51,22 +104,16 @@ namespace Estagio.WinForm
             RepositorioDeMovimentacao.Instancia.Add(MovimentacaoDeEntrada);
         }
 
-
-
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-
-            MovimentacaoDeEntrada.Itens.Add(AdicioneUmNovoItemDeMovimentacao());
-
-        }
-
         private ItemMovimentacao AdicioneUmNovoItemDeMovimentacao()
         {
-            ItemMovimentacao novoItemMovimentacao = new ItemMovimentacao();
-            novoItemMovimentacao.Quantidade = Convert.ToInt32(txtQuantidade.Text);
-            novoItemMovimentacao.ValorUnitario = Convert.ToDecimal(txtValor.Text);
-            novoItemMovimentacao.ObtenhaProduto((Produto)bsGeral.Current);
+            var quantidade = 1;
+            var novoItemMovimentacao = new ItemMovimentacao();
+            novoItemMovimentacao.Quantidade = quantidade;
+            novoItemMovimentacao.ValorUnitario = ProdutoSelecionado.PrecoUnitario;
+            novoItemMovimentacao.Produto = ProdutoSelecionado;
             return novoItemMovimentacao;
         }
+
+
     }
 }
