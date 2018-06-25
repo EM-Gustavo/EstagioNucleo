@@ -22,8 +22,9 @@ namespace Estagio.WinForm
 
         protected override void MonteColunas(DataGridView dgvGeral)
         {
-            dgvGeral.CrieColuna("Id", nameof(Produto.Id), 90);
             dgvGeral.CrieColunaFill("Descrição", nameof(Produto.Descricao));
+            dgvGeral.CrieColuna("Preço Unit.", nameof(Produto.PrecoUnitario), 80);
+            dgvGeral.CrieColuna("Qtd. Mínima", nameof(Produto.QuantidadeMinimaEstoque), 80);
         }
 
 

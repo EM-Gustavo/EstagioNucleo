@@ -19,21 +19,8 @@ namespace Estagio.WinForm
             InitializeComponent();
         }
 
-
-        private void frmCadastroDeFornecedor_Load(object sender, EventArgs e)
-        {
-            var fornecedor = new Fornecedor();
-            var CpfCnpj = new CPFCNPJ("38.117.767/0001-78");
-            fornecedor.Nome = "Jose da Costa";
-            fornecedor.Id = 1;
-            fornecedor.CPFCNPJ = CpfCnpj;
-            RepositorioDeFornecedor.Instancia.Add(fornecedor);
-
-        }
-
         protected override void MonteColunas(DataGridView dgvGeral)
         {
-            dgvGeral.CrieColuna("Id", nameof(Fornecedor.Id), 90);
             dgvGeral.CrieColunaFill("Nome", nameof(Fornecedor.Nome));
         }
 

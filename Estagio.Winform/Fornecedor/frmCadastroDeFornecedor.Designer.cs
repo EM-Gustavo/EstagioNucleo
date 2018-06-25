@@ -90,7 +90,6 @@
             this.ClientSize = new System.Drawing.Size(643, 450);
             this.Name = "frmCadastroDeFornecedor";
             this.Text = "Cadastro de Fornecedor";
-            this.Load += new System.EventHandler(this.frmCadastroDeFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsGeral)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

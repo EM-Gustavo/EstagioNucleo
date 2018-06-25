@@ -21,8 +21,7 @@ namespace Estagio.WinForm
 
         protected override void MonteColunas(DataGridView dgvGeral)
         {
-            MetodosDeExtenssaoCrieColunas.CrieColuna(dgvGeral, "Id", nameof(Cliente.Id), 90);
-            MetodosDeExtenssaoCrieColunas.CrieColunaFill(dgvGeral, "Nome", nameof(Cliente.Nome));
+            dgvGeral.CrieColunaFill("Nome", nameof(Cliente.Nome));
         }
 
         protected override void RemovaItemDaLista(object itemSelecioando)
