@@ -62,7 +62,7 @@ namespace Estagio.WinForm
                     {
                         _itemMovimentacao.Quantidade = value;
                         OnPropertyChanged("Quantidade");
-                    }
+                     }
                 }
             }
 
@@ -86,7 +86,7 @@ namespace Estagio.WinForm
             private void OnPropertyChanged(string prop)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-                item.PropertyChanged -= Item_PropertyChanged;
+                this.PropertyChanged -= this.PropertyChanged;
             }
         }
 
@@ -115,11 +115,12 @@ namespace Estagio.WinForm
 
         private void dgvProdutos_DoubleClick(object sender, EventArgs e)
         {
-            if (!EhProduto())
+            if (EhPermitidoInserir())
             {
                 IsereItens();
-                AtuazaDataGridItens();
+
             }
+            AtuazaDataGridItens();
         }
 
         private Produto SelecioneProduto()
@@ -128,7 +129,7 @@ namespace Estagio.WinForm
             return (Produto)bsProdutos.Current;
         }
 
-        private bool EhProduto()
+        private bool EhPermitidoInserir()
         {
             foreach (var item in _itensSelecioandos)
             {
@@ -136,11 +137,10 @@ namespace Estagio.WinForm
                 {
                     item.PropertyChanged += Item_PropertyChanged;
                     item.Quantidade++;
-                    //Refresh();
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
         private void Item_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -173,6 +173,12 @@ namespace Estagio.WinForm
             return new ItemMovimentacaoMV(novoItemMovimentacao);
 
         }
-        
+
+        private void dgvItensSelecionados_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var item = (ItemMovimentacaoMV)bsProdutosSelecionados.Current;
+            item.PropertyChanged += Item_PropertyChanged;
+            //aqui vai modificar
+        }
     }
 }

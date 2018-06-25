@@ -224,6 +224,7 @@
             this.dgvItensSelecionados.Name = "dgvItensSelecionados";
             this.dgvItensSelecionados.Size = new System.Drawing.Size(455, 414);
             this.dgvItensSelecionados.TabIndex = 39;
+            this.dgvItensSelecionados.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensSelecionados_CellEndEdit);
             // 
             // frmMovimentacaoEntrada
             // 
