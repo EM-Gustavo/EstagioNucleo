@@ -37,8 +37,7 @@ namespace Estagio.WinForm
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            AtualizeDataGrid();
-            AtuazaDataGridItens();
+            AtualizeDataGridProdutos();
         }
 
         private class ItemMovimentacaoMV : INotifyPropertyChanged
@@ -100,7 +99,7 @@ namespace Estagio.WinForm
             dgvItensSelecionados.CrieColuna("Quantidade", nameof(ItemMovimentacao.Quantidade), 80);
             dgvItensSelecionados.CrieColuna("Subtotal", nameof(ItemMovimentacao.ValorMovimentacao), 80);
         }
-        private void AtualizeDataGrid()
+        private void AtualizeDataGridProdutos()
         {
             bsProdutos.DataSource = RepositorioDeProduto.Instancia.GetAll();
             bsProdutos.ResetBindings(false);
@@ -110,7 +109,6 @@ namespace Estagio.WinForm
         {
             bsProdutosSelecionados.DataSource = _itensSelecioandos;
             bsProdutosSelecionados.ResetBindings(false);
-     
         }
 
         private void dgvProdutos_DoubleClick(object sender, EventArgs e)
@@ -118,9 +116,9 @@ namespace Estagio.WinForm
             if (EhPermitidoInserir())
             {
                 IsereItens();
-
             }
             AtuazaDataGridItens();
+            AtualizeValorTotal();
         }
 
         private Produto SelecioneProduto()
@@ -145,7 +143,7 @@ namespace Estagio.WinForm
 
         private void Item_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MessageBox.Show($"{e.PropertyName} foi alterada");
+            MessageBox.Show($"{e.PropertyName} foi alterada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void IsereItens()
@@ -155,11 +153,38 @@ namespace Estagio.WinForm
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            MovimentacaoDeEntrada itemDeEntrada = new MovimentacaoDeEntrada();
-            itemDeEntrada.Fornecedor = ucPesquisaFornecedor1.Fornecedor;
-            itemDeEntrada.Data = dtpEntrada.Value.Date;
+            MovimentacaoDeEntrada _itemDeEntrada = new MovimentacaoDeEntrada();
+            _itemDeEntrada.Fornecedor = ucPesquisaFornecedor1.Fornecedor;
+            _itemDeEntrada.Data = dtpEntrada.Value.Date;
 
-            RepositorioDeMovimentacao.Instancia.Add(itemDeEntrada);
+            _itemDeEntrada.Itens = ObtenhaItensDeEntrada();
+
+            RepositorioDeMovimentacao.Instancia.Add(_itemDeEntrada);
+
+            MessageBox.Show("Movimentação realizada com sucesso", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimparFormulario();
+        }
+
+        private void LimparFormulario()
+        {
+            _itensSelecioandos.Clear();
+            ucPesquisaFornecedor1.limpeTextBox();
+            bsProdutosSelecionados.ResetBindings(false);
+            AtualizeValorTotal();
+        }
+
+        private List<ItemMovimentacao> ObtenhaItensDeEntrada()
+        {
+            List<ItemMovimentacao> _novosItensDeEntrada = new List<ItemMovimentacao>();
+            foreach (var item in _itensSelecioandos)
+            {
+                ItemMovimentacao _itensAdcionados = new ItemMovimentacao();
+                _itensAdcionados.Quantidade = item.Quantidade;
+                _itensAdcionados.ValorUnitario = item.ValorUnitario;
+                _itensAdcionados.Produto = item.Produto;
+                _novosItensDeEntrada.Add(_itensAdcionados);
+            }
+            return _novosItensDeEntrada;
         }
 
         private ItemMovimentacaoMV AdicioneUmNovoItemDeMovimentacao()
@@ -171,14 +196,40 @@ namespace Estagio.WinForm
             novoItemMovimentacao.Produto = SelecioneProduto();
 
             return new ItemMovimentacaoMV(novoItemMovimentacao);
-
         }
 
         private void dgvItensSelecionados_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var item = (ItemMovimentacaoMV)bsProdutosSelecionados.Current;
-            item.PropertyChanged += Item_PropertyChanged;
-            //aqui vai modificar
+            var itemSelecionado = (ItemMovimentacaoMV)bsProdutosSelecionados.Current;
+            var cellAtual = dgvItensSelecionados.CurrentCell;
+            foreach (var item in _itensSelecioandos)
+            {
+                if (item.Equals(itemSelecionado))
+                {
+                    item.PropertyChanged += Item_PropertyChanged;
+
+                    if (cellAtual.ColumnIndex == 1)
+                    {
+                        //Formula para que a messageBox do evento dispare corretamente
+                        item.Quantidade = (decimal)(item.Quantidade += cellAtual.Value) / 2;
+                    }
+                    if (cellAtual.ColumnIndex == 2) 
+                    {
+                        item.Quantidade = (int)(item.Quantidade += cellAtual.Value) / 2;
+                        item.Quantidade = (int)cellAtual.Value;
+                    }
+                }
+            }
+            AtualizeValorTotal();
         }
+
+        private void AtualizeValorTotal()
+        {
+            var valorTotal = _itensSelecioandos.Sum(t => t.ValorMovimentacao);
+            txtTotal.Text = valorTotal.ToString();
+        }
+
+
+
     }
 }

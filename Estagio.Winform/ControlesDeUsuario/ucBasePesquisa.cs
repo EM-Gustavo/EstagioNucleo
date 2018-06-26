@@ -34,5 +34,10 @@ namespace Estagio.WinForm.ControlesDeUsuario
         {
             throw new NotImplementedException();
         }
+
+        public void limpeTextBox()
+        {
+            txtPesquisa.Text = String.Empty;
+        }
     }
 }

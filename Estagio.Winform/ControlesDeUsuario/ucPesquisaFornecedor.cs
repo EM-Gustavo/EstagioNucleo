@@ -28,5 +28,7 @@ namespace Estagio.WinForm.ControlesDeUsuario
             Fornecedor = fornecedor;
             return resultado;
         }
+
+        
     }
 }
